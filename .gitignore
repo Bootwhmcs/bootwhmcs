@@ -3,6 +3,3 @@ default
 portal
 index.php
 .DS_Store
-orderforms/*
-
-!orderforms/bootorder/*
