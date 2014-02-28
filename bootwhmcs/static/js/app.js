@@ -91,4 +91,9 @@ jQuery(document).ready(function(){
   
   $("#country").select2();
   
+  $('.extraTicketAttachment').click(function() { 
+    jQuery("#fileuploads").append('<input type="file" name="attachments[]" style="width:70%;" /><br />');
+    return false;
+  });
+  
 });

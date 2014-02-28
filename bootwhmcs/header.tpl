@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="templates/{$template}/static/css/select2.css">
     
     <link rel="stylesheet" href="templates/{$template}/static/css/bootwhmcs.css">
+    
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -50,7 +53,6 @@
             <li><a href="{if $loggedin}clientarea{else}index{/if}.php">{$LANG.hometitle}</a></li>
             
             {if $loggedin}
-            <li><a href="announcements.php">{$LANG.announcementstitle}</a></li>
             
             <!-- Services Dropdown -->
             <li class="dropdown">
@@ -125,6 +127,7 @@
             <li><a href="contact.php">{$LANG.contactus}</a></li>
             
             {/if}
+            <li><a href="submitticket.php">{$LANG.navopenticket}</a></li>
           </ul>
           
           <!-- Account / Right Dropdown -->
