@@ -1,5 +1,18 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+#footer {
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .fb_iframe_widget,
