@@ -1,6 +1,4 @@
-{include file="$template/pageheader.tpl" title=$LANG.clientareanavsecurity}
-
-{include file="$template/clientareadetailslinks.tpl"}
+{include file="$template/pageheader.tpl" title=$LANG.clientareanavsecurity navtype="clientdetails"}
 
 <br />
 

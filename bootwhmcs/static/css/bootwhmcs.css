@@ -8,6 +8,17 @@ body {
   margin-bottom: 80px;
 }
 
+.nav-header h1 {
+  display: inline-block;
+  margin-top: 0px;
+}
+
+.nav-header ul {
+  float: right;
+  margin-top: 17px;
+  border-bottom: none;
+}
+
 #footer {
   height: 80px;
   position: absolute;

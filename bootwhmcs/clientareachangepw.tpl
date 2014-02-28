@@ -1,6 +1,4 @@
-{include file="$template/pageheader.tpl" title=$LANG.clientareanavchangepw}
-
-{include file="$template/clientareadetailslinks.tpl"}
+{include file="$template/pageheader.tpl" title=$LANG.clientareanavchangepw navtype="clientdetails"}
 
 {if $successful}
 <div class="alert alert-success">

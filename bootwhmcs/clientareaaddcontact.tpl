@@ -1,8 +1,6 @@
 <script type="text/javascript" src="includes/jscript/statesdropdown.js"></script>
 
-{include file="$template/pageheader.tpl" title=$LANG.clientareanavcontacts}
-
-{include file="$template/clientareadetailslinks.tpl"}
+{include file="$template/pageheader.tpl" title=$LANG.clientareanavcontacts navtype="clientdetails"}
 
 <br />
 

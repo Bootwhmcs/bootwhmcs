@@ -1,8 +1,6 @@
-{include file="$template/pageheader.tpl" title=$LANG.clientareanavdetails}
+{include file="$template/pageheader.tpl" title=$LANG.clientareanavdetails navtype="clientdetails"}
 
 <script type="text/javascript" src="includes/jscript/statesdropdown.js"></script>
-
-{include file="$template/clientareadetailslinks.tpl"}
 
 {if $successful}
 <div class="alert alert-success">
