@@ -79,13 +79,16 @@ jQuery(document).ready(function(){
     win.window.focus();
   }
   
+  
+  
   jQuery("#subaccount").click(function () {
     if (jQuery("#subaccount:checked").val()!=null) {
-        jQuery("#subaccountfields").slideDown();
+      jQuery("#subaccountfields").slideDown();
     } else {
-        jQuery("#subaccountfields").slideUp();
+      jQuery("#subaccountfields").slideUp();
     }
-});
+  });
   
+  $("#country").select2();
   
 });
