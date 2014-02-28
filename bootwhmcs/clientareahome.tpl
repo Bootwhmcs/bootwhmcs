@@ -27,29 +27,27 @@
   </div>
 </div>
 
-{if $announcements}
 <br />
+
+{if $announcements}
 <div class="alert alert-warning">
   <strong>{$LANG.ourlatestnews}:</strong> {$announcements.0.text|strip_tags|truncate:100:'...'} - <a href="announcements.php?id={$announcements.0.id}">{$LANG.more}...</a>
 </div>
 {/if}
 
 {if $ccexpiringsoon}
-<br />
 <div class="alert alert-danger">
   <strong>{$LANG.ccexpiringsoon}:</strong> {$LANG.ccexpiringsoondesc|sprintf2:'<a href="clientarea.php?action=creditcard">':'</a>'}
 </div>
 {/if}
 
 {if $clientsstats.incredit}
-<br />
 <div class="alert alert-success">
   <strong>{$LANG.availcreditbal}:</strong> {$LANG.availcreditbaldesc|sprintf2:$clientsstats.creditbalance}
 </div>
 {/if}
 
 {if $clientsstats.numoverdueinvoices>0}
-<br />
 <div class="alert alert-danger">
   <strong>{$LANG.youhaveoverdueinvoices|sprintf2:$clientsstats.numoverdueinvoices}:</strong> {$LANG.overdueinvoicesdesc|sprintf2:'<a href="clientarea.php?action=masspay&all=true">':'</a>'}
 </div>
