@@ -83,7 +83,7 @@
               <div class="controls">
                   <input type="file" name="attachments[]" style="width:70%;" /><br />
                   <div id="fileuploads"></div>
-                  <a href="#" onclick="extraTicketAttachment();return false"><img src="images/add.gif" align="absmiddle" border="0" /> {$LANG.addmore}</a><br />
+                  <a href="#" class="extraTicketAttachment"><img src="images/add.gif" align="absmiddle" border="0" /> {$LANG.addmore}</a><br />
                   ({$LANG.supportticketsallowedextensions}: {$allowedfiletypes})
               </div>
           </div>
