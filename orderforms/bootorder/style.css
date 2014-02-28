@@ -1,0 +1,804 @@
+/*
+Master
+*/
+
+#order-modern {
+    margin: 0;
+    padding: 20px 0;
+}
+
+#order-modern h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#order-slider h2 {
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+
+#order-slider h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#order-modern select {
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+
+#order-modern .clear {
+    clear: both;
+}
+
+#order-modern #configcontainer, #order-modern #configcontainer2 {
+    display: none;
+}
+
+#order-modern .loading {
+    display: none;
+    width: 220px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+}
+
+#order-modern .errorbox {
+    display: none;
+    margin: 10px auto 10px auto;
+    padding: 10px 15px;
+    background-color: #FBEEEB;
+    border: 1px dashed #cc0000;
+    width: 90%;
+    font-weight: bold;
+    color: #cc0000;
+    text-align: center;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+#order-modern .errorbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+}
+#order-modern .errorbox li {
+    font-weight: normal;
+    text-align: left;
+    color:#000;
+}
+
+#order-modern .textleft{
+    text-align: left;
+}
+
+#order-modern .textcenter {
+    text-align: center;
+}
+
+#order-modern .textright {
+    text-align: right;
+}
+
+#order-modern .textgreen {
+    color: #779500;
+}
+
+#order-modern .textred {
+    color: #cc0000;
+}
+
+#order-modern table tr td {
+    padding: 2px 3px;
+}
+
+/*
+Product Categories
+*/
+
+#order-modern #categories {
+    display: none;
+    width: 75%;
+    margin: 10px auto 0 auto;
+    padding: 10px 0 10px 15px;
+    background-color: #666;
+    text-align: center;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+#order-modern #categories a {
+    text-decoration: none;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+#order-modern #categories a:hover {
+    color: #000;
+}
+#order-modern #currencychooser img {
+    vertical-align: baseline;
+}
+#order-modern #currencychooser {
+    float: right;
+    margin: 10px 30px 10px 0;
+    padding: 5px 5px 5px 10px;
+    background-color: #F8F7ED;
+    border: 1px solid #F4E3A2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: Verdana;
+}
+#order-modern #currencychooser img {
+    vertical-align: baseline;
+}
+#order-modern #currencychooser a {
+    text-decoration: none;
+    padding-right: 5px;
+    color: #000;
+}
+#order-modern #currencychooser a:hover {
+    color: #0066CC;
+}
+
+/*
+Product Listing
+*/
+
+#order-modern .products {
+    float: left;
+    margin: 0;
+    width: 50%;
+}
+
+#order-modern .product {
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .product:hover {
+    background-color: #E6EDFF;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#order-modern .product .pricing {
+    float: right;
+    text-align: right;
+    font-family: Lucida Sans Unicode,Lucida Grande,sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+#order-modern .product .name {
+    font-family: Lucida Sans Unicode,Lucida Grande,sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#order-modern .product .prodfeature {
+    float: left;
+    margin: 5px 5px 0 0;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: center;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #ff6600;
+}
+
+#order-modern .product .prodfeature .feature {
+    font-size: 13px;
+    color: #666;
+}
+
+#order-modern .product .description {
+    font-size: 0.9em;
+    margin: 15px 30px 0 20px;
+}
+
+#order-modern .product .ordernowbox {
+    margin: 15px 0 0 0;
+    text-align: right;
+}
+
+#order-modern .ordernow {
+    margin: 5px;
+    padding: 6px 10px 6px 10px;
+    background-color: #fff;
+    border: 1px solid #AADD64;
+    color: #7BB928;
+    font-size: 16px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*
+Domain Registrations
+*/
+
+#order-modern .domainreg {
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    width: 70%;
+    background-color: #f6f6f6;
+    border: 1px dashed #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#order-modern .domainoptions {
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+#order-modern .domainoptions .option {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+#order-modern .domainoptions .option:first-child {
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    -o-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+}
+#order-modern .domainoptions .option:last-child {
+    border-bottom: 0;
+    -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -o-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+#order-modern .domainoptions .optionselected {
+    background-color: #EDF1FE;
+}
+
+#order-modern .domainreginput {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#order-modern .domainreginput input, #order-modern .domainreginput select, #order-modern .domainregperiod select {
+    font-size: 14px;
+    padding: 3px;
+}
+
+#greyout {
+    display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: #ccc;
+    filter:alpha(opacity=60);
+    -moz-opacity:0.6;
+    -khtml-opacity: 0.6;
+    opacity: 0.6;
+    z-index: 50000;
+}
+
+#domainpopupcontainer {
+    display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    padding: 150px 0 0 0;
+    z-index: 50001;
+}
+
+#domainresults {
+    width: 550px;
+    margin: 0 auto 0 auto;
+    padding: 15px 0 15px 0;
+    border: 15px solid #fff;
+    background-color: #fff;
+    text-align: center;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#order-modern .domainbox {
+     background-color:#fff;
+     width:550px;
+     padding:15px;
+}
+
+#order-modern .domainavailable {
+    color: #9AC003;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#order-modern .domainunavailable {
+    color: #cc0000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#order-modern .domaininvalid {
+    color: #cc0000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#order-modern .domainregperiod {
+    font-size: 12px;
+    text-align: center;
+}
+
+#order-modern div.domainsuggestions {
+    font-weight: bold;
+    padding: 10px 0 10px 0;
+}
+
+#order-modern table.domainsuggestions {
+    margin: 0 auto;
+    width: 80%;
+}
+#order-modern table.domainsuggestions th {
+    background-color: #1A4D80;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px;
+    line-height: 20px;
+    color: #fff;
+}
+#order-modern table.domainsuggestions td {
+    background-color: #FFF;
+    text-align: center;
+    border-bottom: 1px solid #EBEBEB;
+    font-size: 11px;
+    line-height: 25px;
+}
+#order-modern table.domainsuggestions td select {
+    font-size: 11px;
+}
+
+#order-modern #domainconfig {
+    margin: 0 auto;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*
+Product Config
+*/
+
+#order-modern .prodconfigcol1 {
+    float: left;
+    width: 65%;
+}
+
+#order-modern .prodconfigcol2 {
+    float: right;
+    width: 33%;
+}
+
+#order-modern .billingcycle {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .serverconfig {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .configoptions {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .addons {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .customfields {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*
+Config Tables
+*/
+
+#order-modern .configtable td {
+    padding: 2px 5px 2px 5px;
+}
+
+#order-modern .configtable td.fieldlabel {
+    width: 150px;
+    text-align: right;
+}
+
+#order-modern .configtable td.radiofield {
+    width: 30px;
+    text-align: center;
+}
+
+#order-modern .configtable td.fieldarea {
+    background-color: #efefef;
+    border-bottom: 1px solid #fff;
+    padding: 5px;
+    text-align: left;
+}
+
+#order-modern .configoplabel {
+    color: #ff6600;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+/*
+Order Summary
+*/
+
+#order-modern .ordersummary {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#order-modern .ordersummarytbl {
+    width: 100%;
+}
+
+#order-modern .ordersummarytbl td {
+    font-size: 11px;
+}
+
+#order-modern .summaryproduct {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#order-modern .checkoutbuttons {
+    text-align: center;
+}
+
+#order-modern .checkoutbuttons input {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 14px;
+    padding: 5px 20px 5px 20px;
+    margin-bottom: 10px;
+}
+
+#order-modern .checkoutbuttons input.checkout {
+    border: 1px solid #ccc;
+    background-color: #E0FBA8;
+    font-size: 14px;
+    padding: 5px 20px 5px 20px;
+}
+
+/*
+Addons
+*/
+
+#order-modern .addoncontainer {
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    width: 90%;
+    background-color: #f6f6f6;
+    border: 1px dashed #ccc;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#order-modern .addoncontainer .title {
+    margin: 0;
+    padding: 0;
+    font-family: Lucida Sans Unicode,Lucida Grande,sans-serif;
+    font-size: 16px;
+}
+
+#order-modern .addoncontainer .desc {
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+}
+
+#order-modern .addoncontainer .pricing {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #cc0000;
+}
+
+#order-modern .addoncontainer select {
+    max-width: 50%;
+}
+
+/*
+Domain Renewals
+*/
+
+#order-modern .regperiod {
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+
+#order-modern table.renewals {
+    width: 100%;
+}
+#order-modern table.renewals th {
+    background-color: #666;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 3px;
+    line-height: 20px;
+}
+#order-modern table.renewals td {
+    background-color: #FFF;
+    text-align: center;
+    border-bottom: 1px solid #EBEBEB;
+    font-size: 12px;
+    line-height: 28px;
+}
+#order-modern table.renewals tr.rowhighlight td {
+    background-color: #EFF2F9;
+}
+#order-modern table.renewals tr:hover td {
+    background-color: #EFF2F9;
+}
+#order-modern table.renewals th, table.datatable th a, table.datatable th a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+#order-modern table.renewals th a:hover {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+/*
+Shopping Cart
+*/
+
+#order-modern table.cart {
+    width: 100%;
+}
+#order-modern table.cart th {
+    background-color: #666;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 3px;
+    line-height: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+#order-modern table.cart td {
+    background-color: #FFF;
+    border-bottom: 1px solid #EBEBEB;
+    font-size: 12px;
+    padding: 4px;
+}
+#order-modern table.cart tr.subtotal td {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #EBEBEB;
+    font-size: 12px;
+    padding: 4px;
+}
+#order-modern table.cart tr.subtotal:hover td {
+    background-color: #F5F5F5;
+}
+#order-modern table.cart tr.promotion td {
+    background-color: #FFFFDA;
+    border-bottom: 1px solid #EBEBEB;
+    font-size: 12px;
+    padding: 4px;
+}
+#order-modern table.cart tr.promotion:hover td {
+    background-color: #FFFFDA;
+}
+#order-modern table.cart tr.total td {
+    background-color: #E7FFDA;
+    color: #339100;
+    border-bottom: 0;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 4px;
+}
+#order-modern table.cart tr.total:hover td {
+    background-color: #E7FFDA;
+}
+#order-modern table.cart tr.recurring td {
+    background-color: #F1EFDC;
+    border-bottom: 2px solid #666;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px;
+}
+#order-modern table.cart tr.recurring:hover td {
+    background-color: #F1EFDC;
+}
+#order-modern table.cart tr:hover td {
+    background-color: #EFF2F9;
+}
+#order-modern table.cart th, #order-modern table.datatable th a, #order-modern table.datatable th a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+#order-modern table.cart th a:hover {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+#order-modern .cartedit {
+    font-size: 11px;
+    color: #888;
+}
+
+#order-modern .cartremove {
+    font-size: 11px;
+    color: #cc0000;
+}
+
+#order-modern .cartbuttons {
+    float: right;
+    margin: 0;
+    padding: 10px 0 0 0;
+    width: 40%;
+    text-align: center;
+}
+
+#order-modern .checkoutcol1 {
+    float: left;
+    width: 49%;
+}
+
+#order-modern .checkoutcol2 {
+    float: right;
+    width: 49%;
+}
+
+#order-modern .signuptype {
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0 10px 0 10px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    line-height: 20px;
+    color: #000;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-radius-topleft: 5px;
+    -webkit-border-radius-topright: 5px;
+    -o-border-radius-topleft: 5px;
+    -o-border-radius-topright: 5px;
+    border-radius-topleft: 5px;
+    border-radius-topright: 5px;
+}
+#order-modern .signuptype:hover {
+    cursor: hand;
+    cursor: pointer;
+}
+#order-modern .signuptype.active {
+    background-color: #efefef;
+    color: #000;
+    font-weight: bold;
+}
+
+#order-modern .signupfields {
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin: 0 0 20px 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+#order-modern .signupfields .configtable td.fieldlabel {
+    width: 100px;
+}
+#order-modern .signupfields.padded {
+    padding: 15px;
+    text-align: center;
+}
+#order-modern .signupfields.hidden {
+    display: none;
+}
+
+#order-modern .carttaxwarning {
+    margin: 0 0 20px 0;
+    color: #666;
+    text-align: center;
+}
+
+#order-modern .cartwarningbox {
+    margin: 20px 0 20px 0;
+    padding: 7px;
+    border: 1px solid #EBE8CD;
+    border-left: 0;
+    border-right: 0;
+    background-color: #F1EFDC;
+    text-align: center;
+    color: #000;
+}
