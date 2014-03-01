@@ -19,6 +19,23 @@ body {
   border-bottom: none;
 }
 
+.headerSortdesc,
+.headerSortasc {
+  position: relative;
+}
+
+.headerSortdesc:after,
+.headerSortasc:after {
+  top:0;
+  font-family: "FontAwesome";
+  margin-left: 10px;
+  content: "\f077";
+}
+
+.headerSortasc:after {
+  content: "\f078";
+}
+
 #footer {
   height: 80px;
   position: absolute;
