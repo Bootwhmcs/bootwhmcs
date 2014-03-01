@@ -5,7 +5,7 @@ BootWHMCS is a WHMCS theme written from scratch to include and follow the awesom
 
 Using the latest version of Bootstrap and Font Awesome, then BootWHMCS provides an extremely simple and easy way to get started with your new WHMCS theme.
 
-**Changelog:** http://bootstrap.com/changelog
+**Changelog:** http://bootwhmcs.com/changelog
 
 ### Installation
 Upload the folder "bootwhmcs" to the WHMCS templates folder and activate it under "General Settings"..
