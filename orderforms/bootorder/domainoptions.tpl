@@ -12,16 +12,25 @@
 
 {if $status eq "available"}
 
-<div class="domainavailable">{$LANG.cartcongratsdomainavailable|sprintf2:$domain}</div>
+<div class="alert alert-success">{$LANG.cartcongratsdomainavailable|sprintf2:$domain}</div>
+
 <input type="hidden" name="domains[]" value="{$domain}" />
-<div class="domainregperiod">{$LANG.cartregisterhowlong} <select name="domainsregperiod[{$domain}]" id="regperiod">{foreach key=period item=regoption from=$regoptions}{if $regoption.register}<option value="{$period}">{$period} {$LANG.orderyears} @ {$regoption.register}</option>{/if}{/foreach}</select></div>
+
+<p>{$LANG.cartregisterhowlong}</p>
+
+<select name="domainsregperiod[{$domain}]" id="regperiod" class="form-control">
+  {foreach key=period item=regoption from=$regoptions}{if $regoption.register}
+    <option value="{$period}">{$period} {$LANG.orderyears} @ {$regoption.register}</option>{/if}
+  {/foreach}
+</select>
 
 {assign var='continueok' value=true}
 
 {elseif $status eq "unavailable"}
 
-<div class="domainunavailable">{$LANG.cartdomaintaken|sprintf2:$domain}</div>
-<p align="center"><a href="#" onclick="cancelcheck();return false">{$LANG.carttryanotherdomain}</a></p>
+<p>{$LANG.cartdomaintaken|sprintf2:$domain}</p>
+
+<a href="#" onclick="cancelcheck();return false"><i class="fa fa-thumbs-up"></i> {$LANG.carttryanotherdomain}</a>
 
 {/if}
 
@@ -31,8 +40,9 @@
 
 {if $status eq "available"}
 
-<div class="domainunavailable">{$LANG.carttransfernotregistered|sprintf2:$domain}</div>
-<p align="center"><a href="#" onclick="cancelcheck();return false">{$LANG.carttryanotherdomain}</a></p>
+<p>{$LANG.carttransfernotregistered|sprintf2:$domain}</p>
+
+<a href="#" onclick="cancelcheck();return false"><i class="fa fa-thumbs-up"></i> {$LANG.carttryanotherdomain}</a>
 
 {elseif $status eq "unavailable"}
 
@@ -70,6 +80,9 @@ completedomain();
 
 {/if}
 
-{if $continueok}<p align="center"><input type="submit" value="{$LANG.ordercontinuebutton}" /></p>{/if}
+{if $continueok}
+<br />
+<input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-block btn-success" />
+{/if}
 
 {/if}
