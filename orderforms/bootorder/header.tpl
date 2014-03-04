@@ -1,3 +1,5 @@
+<script type="text/javascript" src="templates/orderforms/{$carttpl}/js/main.js"></script>
+
 <div class="page-header">
   <h1>{$title}</h1>
 </div>

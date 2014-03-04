@@ -1,8 +1,3 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<script language="javascript">var statesTab=10;</script>
-<script type="text/javascript" src="includes/jscript/statesdropdown.js"></script>
-<script type="text/javascript" src="includes/jscript/pwstrength.js"></script>
-
 {literal}<script language="javascript">
 function removeItem(type,num) {
     var response = confirm("{/literal}{$LANG.cartremoveitemconfirm}{literal}");
@@ -20,12 +15,21 @@ function emptyCart(type,num) {
 
 <div class="page-header">
   <h1>{$LANG.cartreviewcheckout}</h1>
+  {if !$loggedin && $currencies}
+  {foreach from=$currencies item=curr}
+  <a href="cart.php?a=view&currency={$curr.id}"><img src="images/flags/{if $curr.code eq "AUD"}au{elseif $curr.code eq "CAD"}ca{elseif $curr.code eq "EUR"}eu{elseif $curr.code eq "GBP"}gb{elseif $curr.code eq "INR"}in{elseif $curr.code eq "JPY"}jp{elseif $curr.code eq "USD"}us{elseif $curr.code eq "ZAR"}za{else}na{/if}.png" border="0" alt="" /> {$curr.code}</a>
+  {/foreach}
+  {/if}
 </div>
 
-{if $errormessage}<div class="alert alert-danger" style="display:block;">{$errormessage|replace:'<li>':' &nbsp;#&nbsp; '} &nbsp;#&nbsp; </div>{elseif $promotioncode && $rawdiscount eq "0.00"}<div class="errorbox" style="display:block;">{$LANG.promoappliedbutnodiscount}</div>{/if}
+{if $errormessage}
+<div class="alert alert-danger">{$errormessage|replace:'<li>':' &nbsp;#&nbsp; '} &nbsp;#&nbsp;</div>
+{elseif $promotioncode && $rawdiscount eq "0.00"}
+<div class="alert alert-danger">{$LANG.promoappliedbutnodiscount}</div>
+{/if}
 
 {if $bundlewarnings}
-<div class="cartwarningbox">
+<div class="alert alert-warning">
 <strong>{$LANG.bundlereqsnotmet}</strong><br />
 {foreach from=$bundlewarnings item=warning}
 {$warning}<br />
@@ -33,19 +37,10 @@ function emptyCart(type,num) {
 </div>
 {/if}
 
-{if !$loggedin && $currencies}
-<div id="currencychooser">
-{foreach from=$currencies item=curr}
-<a href="cart.php?a=view&currency={$curr.id}"><img src="images/flags/{if $curr.code eq "AUD"}au{elseif $curr.code eq "CAD"}ca{elseif $curr.code eq "EUR"}eu{elseif $curr.code eq "GBP"}gb{elseif $curr.code eq "INR"}in{elseif $curr.code eq "JPY"}jp{elseif $curr.code eq "USD"}us{elseif $curr.code eq "ZAR"}za{else}na{/if}.png" border="0" alt="" /> {$curr.code}</a>
-{/foreach}
-</div>
-<div class="clear"></div>
-{else}
-<br />
-{/if}
+
 
 <form method="post" action="{$smarty.server.PHP_SELF}?a=view">
-  <table class="table table-striped" cellspacing="1">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th width="60%">{$LANG.orderdesc}</th>
@@ -61,7 +56,7 @@ function emptyCart(type,num) {
           {if $product.configoptions}
           {foreach key=confnum item=configoption from=$product.configoptions}&nbsp;&raquo; {$configoption.name}: {if $configoption.type eq 1 || $configoption.type eq 2}{$configoption.option}{elseif $configoption.type eq 3}{if $configoption.qty}{$LANG.yes}{else}{$LANG.no}{/if}{elseif $configoption.type eq 4}{$configoption.qty} x {$configoption.option}{/if}<br />{/foreach}
           {/if}
-          <a href="{$smarty.server.PHP_SELF}?a=confproduct&i={$num}" class="cartedit">[{$LANG.carteditproductconfig}]</a> <a href="#" onclick="removeItem('p','{$num}');return false" class="cartremove">[{$LANG.cartremove}]</a>
+          <a href="{$smarty.server.PHP_SELF}?a=confproduct&i={$num}" class="cartedit"><i class="fa fa-pencil"></i> {$LANG.carteditproductconfig}</a> <a href="#" onclick="removeItem('p','{$num}');return false" class="cartremove"><i class="fa fa-trash-o"></i> {$LANG.cartremove}</a>
 {if $product.allowqty}
 <br /><br />
 <div align="right">{$LANG.cartqtyenterquantity} <input type="text" name="qty[{$num}]" size="3" value="{$product.qty}" /> <input type="submit" value="{$LANG.cartqtyupdate}" /></div>
@@ -118,7 +113,7 @@ function emptyCart(type,num) {
 {if $taxrate2}
 <tr class="subtotal"><td class="textright">{$taxname2} @ {$taxrate2}%: &nbsp;</td><td class="textcenter">{$taxtotal2}</td></tr>
 {/if}
-<tr class="total"><td class="textright">{$LANG.ordertotalduetoday}: &nbsp;</td><td class="textcenter">{$total}</td></tr>
+<tr class="success"><td class="textright">{$LANG.ordertotalduetoday}: &nbsp;</td><td class="textcenter">{$total}</td></tr>
 {if $totalrecurringmonthly || $totalrecurringquarterly || $totalrecurringsemiannually || $totalrecurringannually || $totalrecurringbiennially || $totalrecurringtriennially}
 <tr class="recurring"><td class="textright">{$LANG.ordertotalrecurring}: &nbsp;</td><td class="textcenter">
 {if $totalrecurringmonthly}{$totalrecurringmonthly} {$LANG.orderpaymenttermmonthly}<br />{/if}
@@ -133,7 +128,8 @@ function emptyCart(type,num) {
 
 </form>
 
-<div class="cartbuttons"><input type="button" value="{$LANG.emptycart}" onclick="emptyCart();return false" /> <input type="button" value="{$LANG.continueshopping}" onclick="window.location='cart.php'" /></div>
+<button type="button" onclick="emptyCart();return false" class="btn btn-danger"><i class="fa fa-trash-o"></i> {$LANG.emptycart}</button>
+<button type="button" onclick="window.location='cart.php'" class="btn btn-success"><i class="fa fa-shopping-cart"></i> {$LANG.continueshopping}</button>
 
 {foreach from=$gatewaysoutput item=gatewayoutput}
 <div class="clear"></div>

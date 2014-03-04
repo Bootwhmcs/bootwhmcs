@@ -106,40 +106,74 @@
     </div>
     {/if}
     
+    {if $owndomainenabled}
+    <div class="well well-sm">
+      <div class="radio">
+        <label>
+          <input type="radio" name="domainoption" value="owndomain" id="selowndomain" />
+          <strong>{$LANG.cartexistingdomainchoice|sprintf2:$companyname}</strong>
+        </label>
+      </div>
+      
+      <div class="domainreginput" id="domainowndomain">
+        <div class="input-group">
+          <div class="input-group-addon">www.</div>
+          <input type="text" id="owndomainsld" size="30" value="{$sld}" class="form-control" />
+          <div class="input-group-addon">.</div>
+          <input type="text" id="owndomaintld" size="5" value="{$tld|substr:1}" class="form-control" />
+        </div>
+        
+        <br />
+        
+        <input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-danger" />
+      </div>
+    </div>
+    {/if}
+
+    {if $subdomains}
+    <div class="well well-sm">
+      <div class="radio">
+        <label>
+          <input type="radio" name="domainoption" value="subdomain" id="selsubdomain" />
+          <strong>{$LANG.cartsubdomainchoice|sprintf2:$companyname}</strong>
+        </label>
+      </div>
+
+      <div class="domainreginput" id="domainsubdomain">
+        <div class="input-group">
+          <div class="input-group-addon">http://</div>
+          <input type="text" id="subdomainsld" size="30" value="{$sld}" class="form-control" />
+          <div class="input-group-addon">
+            <select id="subdomaintld">{foreach from=$subdomains key=subid item=subdomain}<option value="{$subid}">{$subdomain}</option>{/foreach}</select>
+          </div>
+        </div>
+        
+        <br />
+          
+        <input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-danger" />
+      </div>
+    </div>
+    {/if}
+
+    {if $freedomaintlds}<p>* <em>{$LANG.orderfreedomainregistration} {$LANG.orderfreedomainappliesto}: {$freedomaintlds}</em></p>{/if}
+  
   </div>
 
-
-
-{if $owndomainenabled}
-<div class="option">
-<label><input type="radio" name="domainoption" value="owndomain" id="selowndomain" />{$LANG.cartexistingdomainchoice|sprintf2:$companyname}</label>
-<div class="domainreginput" id="domainowndomain">
-www. <input type="text" id="owndomainsld" size="30" value="{$sld}" /> . <input type="text" id="owndomaintld" size="5" value="{$tld|substr:1}" /> <input type="submit" value="{$LANG.ordercontinuebutton}" />
-</div>
-</div>
-{/if}
-{if $subdomains}
-<div class="option">
-<label><input type="radio" name="domainoption" value="subdomain" id="selsubdomain" />{$LANG.cartsubdomainchoice|sprintf2:$companyname}</label>
-<div class="domainreginput" id="domainsubdomain">
-http:// <input type="text" id="subdomainsld" size="30" value="{$sld}" /> <select id="subdomaintld">{foreach from=$subdomains key=subid item=subdomain}<option value="{$subid}">{$subdomain}</option>{/foreach}</select> <input type="submit" value="{$LANG.ordercontinuebutton}" />
-</div>
-</div>
-{/if}
-</div>
-
-{if $freedomaintlds}<p>* <em>{$LANG.orderfreedomainregistration} {$LANG.orderfreedomainappliesto}: {$freedomaintlds}</em></p>{/if}
-
 </form>
-    <div id="greyout"></div>
-<div id="domainpopupcontainer">
-<form id="domainfrm" onsubmit="completedomain();return false">
-<div class="domainresults" id="domainresults"><img src="images/loading.gif" border="0" alt="Loading..." /></div>
-</form>
+ 
+<div id="greyout"></div>
+
+<div id="domainpopupcontainer" style="display: none;">
+
+  <form id="domainfrm" onsubmit="completedomain();return false">
+    <div class="domainresults" id="domainresults">
+      <i class="fa fa-spin fa-spinner fa-2x" style="margin: 0 auto;"></i>
+    </div>
+  </form>
+
 </div>
 
 <div id="prodconfigcontainer"></div>
-</div>
 
 {literal}
 <script language="javascript">
@@ -151,7 +185,6 @@ jQuery(document).ready(function(){
     jQuery(".domainoptions input:radio").click(function(){
         jQuery(".domainoptions .option").removeClass('optionselected');
         jQuery(this).parent().parent().addClass('optionselected');
-        jQuery("#domainresults").slideUp();
         jQuery(".domainreginput").hide();
         jQuery("#domain"+jQuery(this).val()).show();
     });
@@ -173,11 +206,11 @@ function checkdomain() {
 function cancelcheck() {
     jQuery("#domainpopupcontainer").slideUp('slow',function() {
         jQuery("#greyout").fadeOut();
-        jQuery("#domainresults").html('<img src="images/loading.gif" border="0" alt="Loading..." />');
+        jQuery("#domainresults").html('<i class="fa fa-spin fa-spinner fa-2x"></i>');
     });
 }
 function completedomain() {
-    jQuery("#domainresults").append('<img src="images/loading.gif" border="0" alt="Loading..." />');
+    jQuery("#domainresults").append('<i class="fa fa-spin fa-spinner fa-2x"></i>');
     jQuery.post("cart.php", 'ajax=1&a=add&pid={/literal}{$pid}{literal}&domainselect=1&'+jQuery("#domainfrm").serialize(),
     function(data){
         if (data=='') {
@@ -188,9 +221,7 @@ function completedomain() {
             });
         } else {
             jQuery("#prodconfigcontainer").html(data);
-            jQuery("#domainpopupcontainer").slideUp('slow',function() {
-                jQuery("#greyout").fadeOut();
-            });
+            jQuery("#domainpopupcontainer").slideUp();
             jQuery("#prodconfigcontainer").slideDown();
         }
     });

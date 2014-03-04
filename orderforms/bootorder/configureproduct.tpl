@@ -1,34 +1,72 @@
-<script type="text/javascript" src="includes/jscript/jqueryui.js"></script>
-<script type="text/javascript" src="templates/orderforms/{$carttpl}/js/main.js"></script>
-<link rel="stylesheet" type="text/css" href="templates/orderforms/{$carttpl}/style.css" />
-<link rel="stylesheet" type="text/css" href="includes/jscript/css/ui.all.css" />
-
-<div id="order-modern">
-
 <form id="orderfrm">
+  <input type="hidden" name="configure" value="true" />
+  <input type="hidden" name="i" value="{$i}" />
 
-<input type="hidden" name="configure" value="true" />
-<input type="hidden" name="i" value="{$i}" />
+  {if !$firstconfig || $firstconfig && !$domain}<h1>{$LANG.orderconfigure}</h1>{/if}
 
-{if !$firstconfig || $firstconfig && !$domain}<h1>{$LANG.orderconfigure}</h1>{/if}
+  <div id="configproducterror" class="errorbox"></div>
 
-<div id="configproducterror" class="errorbox"></div>
-
-<div class="prodconfigcol1">
-
-{if $pricing.type eq "recurring"}
-<h3>{$LANG.cartchoosecycle}</h3>
-<div class="billingcycle">
-<table width="100%" cellspacing="0" cellpadding="0" class="configtable">
-{if $pricing.monthly}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle1" value="monthly"{if $billingcycle eq "monthly"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle1">{$pricing.monthly}</label></td></tr>{/if}
-{if $pricing.quarterly}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle2" value="quarterly"{if $billingcycle eq "quarterly"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle2">{$pricing.quarterly}</label></td></tr>{/if}
- {if $pricing.semiannually}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle3" value="semiannually"{if $billingcycle eq "semiannually"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle3">{$pricing.semiannually}</label></td></tr>{/if}
-{if $pricing.annually}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle4" value="annually"{if $billingcycle eq "annually"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle4">{$pricing.annually}</label></td></tr>{/if}
- {if $pricing.biennially}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle5" value="biennially"{if $billingcycle eq "biennially"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle5">{$pricing.biennially}</label></td></tr>{/if}
-{if $pricing.triennially}<tr><td class="radiofield"><input type="radio" name="billingcycle" id="cycle6" value="triennially"{if $billingcycle eq "triennially"} checked{/if} onclick="recalctotals()" /></td><td class="fieldarea"><label for="cycle6">{$pricing.triennially}</label></td></tr>{/if}
-</table>
-</div>
+  {if $pricing.type eq "recurring"}
+  <h3>{$LANG.cartchoosecycle}</h3>
+  
+  {if $pricing.monthly}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle1" value="monthly"{if $billingcycle eq "monthly"} checked{/if} onclick="recalctotals()" />
+      {$pricing.monthly}
+    </label>
+  </div>
+  {/if}
+  
+  {if $pricing.quarterly}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle2" value="quarterly"{if $billingcycle eq "quarterly"} checked{/if} onclick="recalctotals()" />
+      {$pricing.quarterly}
+    </label>
+  </div>
+  {/if}
+  
+  {if $pricing.semiannually}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle3" value="semiannually"{if $billingcycle eq "semiannually"} checked{/if} onclick="recalctotals()" />
+      {$pricing.semiannually}
+    </label>
+  </div>
+  {/if}
+  
+  {if $pricing.annually}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle4" value="annually"{if $billingcycle eq "annually"} checked{/if} onclick="recalctotals()" />
+      {$pricing.annually}
+    </label>
+  </div>
+  {/if}
+  
+  {if $pricing.biennially}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle5" value="biennially"{if $billingcycle eq "biennially"} checked{/if} onclick="recalctotals()" />
+      {$pricing.biennially}
+    </label>
+  </div>
+  {/if}
+  
+  {if $pricing.triennially}
+  <div class="radio">
+    <label>
+      <input type="radio" name="billingcycle" id="cycle6" value="triennially"{if $billingcycle eq "triennially"} checked{/if} onclick="recalctotals()" />
+      {$pricing.triennially}
+    </label>
+  </div>
+  {/if}
 {/if}
+</form>
+
+<hr />
+  
 
 {if $productinfo.type eq "server"}
 <h3>{$LANG.cartconfigserver}</h3>
@@ -127,11 +165,9 @@
 <h3>{$LANG.ordersummary}</h3>
 <div class="ordersummary" id="producttotal"></div>
 
-<div class="checkoutbuttons">
-<input type="button" value="{$LANG.checkout} &raquo;" class="checkout" onclick="addtocart();" /><br />
-<input type="button" value="{$LANG.continueshopping}" onclick="addtocart('{$productinfo.gid}');" /><br />
-<input type="button" value="{$LANG.viewcart}" onclick="window.location='cart.php?a=view'" />
-</div>
+<input type="button" value="{$LANG.checkout} &raquo;" class="checkout btn btn-success" onclick="addtocart();" />
+<input type="button" value="{$LANG.continueshopping}" class="btn btn-primary" onclick="addtocart('{$productinfo.gid}');" />
+<input type="button" value="{$LANG.viewcart}" class="btn btn-danger" onclick="window.location='cart.php?a=view'" />
 
 </div>
 <div class="clear"></div>
