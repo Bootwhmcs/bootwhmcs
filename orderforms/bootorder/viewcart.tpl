@@ -1,4 +1,8 @@
-{literal}<script language="javascript">
+<script type="text/javascript" src="templates/orderforms/{$carttpl}/static/app.js"></script>
+<script type="text/javascript" src="includes/jscript/statesdropdown.js"></script>
+<script type="text/javascript" src="includes/jscript/pwstrength.js"></script>
+{literal}
+<script language="javascript">
 function removeItem(type,num) {
     var response = confirm("{/literal}{$LANG.cartremoveitemconfirm}{literal}");
     if (response) {
@@ -11,7 +15,8 @@ function emptyCart(type,num) {
         window.location = 'cart.php?a=empty';
     }
 }
-</script>{/literal}
+</script>
+{/literal}
 
 <div class="page-header">
   <h1>{$LANG.cartreviewcheckout}</h1>
@@ -30,14 +35,12 @@ function emptyCart(type,num) {
 
 {if $bundlewarnings}
 <div class="alert alert-warning">
-<strong>{$LANG.bundlereqsnotmet}</strong><br />
-{foreach from=$bundlewarnings item=warning}
-{$warning}<br />
-{/foreach}
+  <strong>{$LANG.bundlereqsnotmet}</strong><br />
+  {foreach from=$bundlewarnings item=warning}
+  {$warning}<br />
+  {/foreach}
 </div>
 {/if}
-
-
 
 <form method="post" action="{$smarty.server.PHP_SELF}?a=view">
   <table class="table table-striped">
@@ -51,21 +54,28 @@ function emptyCart(type,num) {
       {foreach key=num item=product from=$products}
       <tr>
         <td>
-          <strong><em>{$product.productinfo.groupname}</em> - {$product.productinfo.name}</strong>
+          <strong>{$product.productinfo.groupname} - {$product.productinfo.name}</strong>
           {if $product.domain} ({$product.domain}){/if}<br />
           {if $product.configoptions}
           {foreach key=confnum item=configoption from=$product.configoptions}&nbsp;&raquo; {$configoption.name}: {if $configoption.type eq 1 || $configoption.type eq 2}{$configoption.option}{elseif $configoption.type eq 3}{if $configoption.qty}{$LANG.yes}{else}{$LANG.no}{/if}{elseif $configoption.type eq 4}{$configoption.qty} x {$configoption.option}{/if}<br />{/foreach}
           {/if}
           <a href="{$smarty.server.PHP_SELF}?a=confproduct&i={$num}" class="cartedit"><i class="fa fa-pencil"></i> {$LANG.carteditproductconfig}</a> <a href="#" onclick="removeItem('p','{$num}');return false" class="cartremove"><i class="fa fa-trash-o"></i> {$LANG.cartremove}</a>
-{if $product.allowqty}
-<br /><br />
-<div align="right">{$LANG.cartqtyenterquantity} <input type="text" name="qty[{$num}]" size="3" value="{$product.qty}" /> <input type="submit" value="{$LANG.cartqtyupdate}" /></div>
-{/if}
-</td><td class="textcenter"><strong>{$product.pricingtext}{if $product.proratadate}<br />({$LANG.orderprorata} {$product.proratadate}){/if}</strong></td></tr>
-{foreach key=addonnum item=addon from=$product.addons}
-<tr class="carttableproduct"><td><strong>{$LANG.orderaddon}</strong> - {$addon.name}</td><td class="textcenter"><strong>{$addon.pricingtext}</strong></td></tr>
-{/foreach}
-{/foreach}
+          
+          {if $product.allowqty}
+          <input type="text" name="qty[{$num}]" size="3" value="{$product.qty}" />
+          <button name="submit" type="submit"><i class="fa fa-refresh"></i></button>
+          {/if}
+        </td>
+        
+        <td class="textcenter"><strong>{$product.pricingtext}{if $product.proratadate}<br />({$LANG.orderprorata} {$product.proratadate}){/if}</strong></td>
+      </tr>
+      
+      {foreach key=addonnum item=addon from=$product.addons}
+      <tr class="carttableproduct">
+        <td><strong>{$LANG.orderaddon}</strong> - {$addon.name}</td><td class="textcenter"><strong>{$addon.pricingtext}</strong></td>
+      </tr>
+      {/foreach}
+    {/foreach}
 
 {foreach key=num item=addon from=$addons}
 <tr class="carttableproduct"><td>
@@ -144,89 +154,324 @@ function emptyCart(type,num) {
 
 <br /><br />
 
-<h2>{$LANG.yourdetails}</h2>
-
-<div style="float:left;width:20px;">&nbsp;</div><div class="signuptype{if !$loggedin && $custtype neq "existing"} active{/if}"{if !$loggedin} id="newcust"{/if}>{$LANG.newcustomer}</div><div class="signuptype{if $custtype eq "existing" && !$loggedin || $loggedin} active{/if}" id="existingcust">{$LANG.existingcustomer}</div>
-<div class="clear"></div>
-
-<div class="signupfields{if $custtype eq "existing" && !$loggedin}{else} hidden{/if}" id="loginfrm">
-<table width="100%" cellspacing="0" cellpadding="0" class="configtable">
-<tr><td class="fieldlabel">{$LANG.clientareaemail}</td><td class="fieldarea"><input type="text" name="loginemail" size="40" /></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareapassword}</td><td class="fieldarea"><input type="password" name="loginpw" size="25" /></td></tr>
-</table>
+<div class="page-header">
+  
+  <h1>{$LANG.yourdetails}</h1>
+  
+  <ul class="pull-right nav nav-tabs" style="margin-top: -32px;">
+    <li class="{if !$loggedin && $custtype neq "existing"}active{/if}"><a href="#newcustomer" data-toggle="tab">{$LANG.newcustomer}</a></li>
+    <li class="{if $custtype eq "existing" && !$loggedin || $loggedin}active{/if}"><a href="#existingcustomer" data-toggle="tab">{$LANG.existingcustomer}</a></li>
+  </ul>
+  
 </div>
-<div class="signupfields{if $custtype eq "existing" && !$loggedin} hidden{/if}" id="signupfrm">
-<table width="100%" cellspacing="0" cellpadding="0" class="configtable">
-<tr><td class="fieldlabel">{$LANG.clientareafirstname}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.firstname}{else}<input type="text" name="firstname" tabindex="1" style="width:80%;" value="{$clientsdetails.firstname}" />{/if}</td><td class="fieldlabel">{$LANG.clientareaaddress1}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.address1}{else}<input type="text" name="address1" tabindex="7" style="width:80%;" value="{$clientsdetails.address1}" />{/if}</td></tr>
-<tr><td class="fieldlabel">{$LANG.clientarealastname}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.lastname}{else}<input type="text" name="lastname" tabindex="2" style="width:80%;" value="{$clientsdetails.lastname}" />{/if}</td><td class="fieldlabel">{$LANG.clientareaaddress2}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.address2}{else}<input type="text" name="address2" tabindex="8" style="width:80%;" value="{$clientsdetails.address2}" />{/if}</td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareacompanyname}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.companyname}{else}<input type="text" name="companyname" tabindex="3" style="width:80%;" value="{$clientsdetails.companyname}" />{/if}</td><td class="fieldlabel">{$LANG.clientareacity}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.city}{else}<input type="text" name="city" tabindex="9" style="width:80%;" value="{$clientsdetails.city}" />{/if}</td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareaemail}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.email}{else}<input type="text" name="email" tabindex="4" style="width:90%;" value="{$clientsdetails.email}" />{/if}</td><td class="fieldlabel">{$LANG.clientareastate}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.state}{else}<input type="text" name="state" tabindex="10" style="width:80%;" value="{$clientsdetails.state}" />{/if}</td></tr>
-<tr>{if !$loggedin}<td class="fieldlabel">{$LANG.clientareapassword}</td><td class="fieldarea"><input type="password" name="password" tabindex="5" id="newpw" size="20" value="{$password}" /></td>{else}<td class="fieldlabel"></td><td class="fieldarea"></td>{/if}<td class="fieldlabel">{$LANG.clientareapostcode}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.postcode}{else}<input type="text" name="postcode" tabindex="11" size="15" value="{$clientsdetails.postcode}" />{/if}</td></tr>
-<tr>{if !$loggedin}<td class="fieldlabel">{$LANG.clientareaconfirmpassword}</td><td class="fieldarea"><input type="password" name="password2" tabindex="6" size="20" value="{$password2}" /></td>{else}<td class="fieldlabel"></td><td class="fieldarea"></td>{/if}<td class="fieldlabel">{$LANG.clientareacountry}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.country}{else}{$clientcountrydropdown|replace:'<select':'<select tabindex="12"'}{/if}</td></tr>
-<tr><td colspan="2" class="fieldarea">{if !$loggedin}<script language="javascript">showStrengthBar();</script>{/if}</td><td class="fieldlabel">{$LANG.clientareaphonenumber}</td><td class="fieldarea">{if $loggedin}{$clientsdetails.phonenumber}{else}<input type="text" name="phonenumber" tabindex="13" size="20" value="{$clientsdetails.phonenumber}" />{/if}</td></tr>
+
+<div class="tab-content">
+
+  <div class="tab-pane{if !$loggedin && $custtype neq "existing"} active{/if}" id="newcustomer">
+  
+    <div class="row">
+    
+      <div class="col-sm-6">
+      
+        <div class="form-group">
+          <label for="firstname">{$LANG.clientareafirstname}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.firstname}</p>
+          {else}
+          <input type="text" name="firstname" tabindex="1" class="form-control" placeholder="{$clientsdetails.firstname}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="lastname">{$LANG.clientarealastname}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.lastname}</p>
+          {else}
+          <input type="text" name="lastname" tabindex="2" class="form-control" placeholder="{$clientsdetails.lastname}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareacompanyname}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.companyname}</p>
+          {else}
+          <input type="text" name="companyname" tabindex="3" class="form-control" placeholder="{$clientsdetails.companyname}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareaemail}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.email}</p>
+          {else}
+          <input type="text" name="email" tabindex="4" class="form-control" placeholder="{$clientsdetails.email}" />
+          {/if}
+        </div>
+        
+        {if !$loggedin}
+        <div class="row">
+        
+          <div class="col-sm-6">
+            <div class="form-group">
+              
+              <label for="">{$LANG.clientareapassword}</label>
+              <input type="password" name="password" tabindex="5" id="password" class="form-control" placeholder="{$password}" />
+            </div>
+          </div>
+          
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="">{$LANG.clientareaconfirmpassword}</label>
+              <input type="password" name="password2" tabindex="6" class="form-control" placeholder="{$password2}" />
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="passstrength">{$LANG.pwstrength}</label>
+          <div id="pwstrengthbox">{$LANG.pwstrengthenter}</div>
+        </div>
+        {/if}
+        
+      </div>
+      
+      <div class="col-sm-6">
+      
+        <div class="form-group">
+          <label for="address1">{$LANG.clientareaaddress1}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.address1}
+          {else}
+          <input type="text" name="address1" tabindex="7" class="form-control" placeholder="{$clientsdetails.address1}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareaaddress2}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.address2}</p>
+          {else}
+          <input type="text" name="address2" tabindex="8" class="form-control" placeholder="{$clientsdetails.address2}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareacity}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.city}</p>
+          {else}
+          <input type="text" name="city" tabindex="9" class="form-control" placeholder="{$clientsdetails.city}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareastate}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.state}</p>
+          {else}
+          <input type="text" name="state" tabindex="10" class="form-control" placeholder="{$clientsdetails.state}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareapostcode}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.postcode}</p>
+          {else}
+          <input type="text" name="postcode" tabindex="11" class="form-control" placeholder="{$clientsdetails.postcode}" />
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareacountry}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.country}</p>
+          {else}
+          {$clientcountrydropdown|replace:'<select':'<select tabindex="12" class="form-control"'}
+          {/if}
+        </div>
+        
+        <div class="form-group">
+          <label for="">{$LANG.clientareaphonenumber}</label>
+          {if $loggedin}
+          <p class="form-control-static">{$clientsdetails.phonenumber}</p>
+          {else}
+          <input type="text" name="phonenumber" tabindex="13" class="form-control" placeholder="{$clientsdetails.phonenumber}" />
+          {/if}
+        </div>
+      
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <div class="tab-pane{if $custtype eq "existing" && !$loggedin || $loggedin} active{/if}" id="existingcustomer">
+    
+    <div class="form-group">
+      <label for="loginemail">{$LANG.clientareaemail}</label>
+      <input type="text" name="loginemail" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+      <label for="loginpw">{$LANG.clientareapassword}</label>
+      <input type="password" name="loginpw" class="form-control" />
+    </div>
+    
+  </div> 
+
+</div>
+
 {if $customfields || $securityquestions}
 {if $securityquestions && !$loggedin}
-<tr><td class="fieldlabel">{$LANG.clientareasecurityquestion}</td><td class="fieldarea" colspan="3"><select name="securityqid" tabindex="14">
-{foreach key=num item=question from=$securityquestions}
+<div class="form-group">
+  <label for="securityquid">{$LANG.clientareasecurityquestion}</label>
+  <select name="securityqid" tabindex="14" class="form-control">
+    {foreach key=num item=question from=$securityquestions}
     <option value={$question.id}>{$question.question}</option>
-{/foreach}
-</select></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareasecurityanswer}</td><td class="fieldarea" colspan="3"><input type="password" name="securityqans" tabindex="15" size="30"></td></tr>
-{/if}
-{foreach key=num item=customfield from=$customfields}
-<tr><td class="fieldlabel">{$customfield.name}</td><td class="fieldarea" colspan="3">{$customfield.input} {$customfield.description}</td></tr>
-{/foreach}
-{/if}
-</table>
+    {/foreach}
+  </select>
 </div>
 
+<div class="form-group">
+  <label for="securityqans">{$LANG.clientareasecurityanswer}</label>
+  <input type="password" name="securityqans" tabindex="15" class="form-control">
+</div>
+{/if}
+
+{foreach key=num item=customfield from=$customfields}
+<div class="form-group">
+  <label for="">{$customfield.name}</label>
+  {$customfield.input|replace:'<input':'<input class="form-control"'}
+  <p class="help-block">{$customfield.description}</p>
+{/foreach}
+{/if}
+
 {if $taxenabled && !$loggedin}
-<div class="carttaxwarning">{$LANG.carttaxupdateselections} <input type="submit" value="{$LANG.carttaxupdateselectionsupdate}" name="updateonly" /></div>
+<div class="alert alert-warning">{$LANG.carttaxupdateselections} <input type="submit" value="{$LANG.carttaxupdateselectionsupdate}" name="updateonly" /></div>
 {/if}
 
 {if $domainsinorder}
-<h2>{$LANG.domainregistrantinfo}</h2>
-<select name="contact" id="domaincontact" onchange="domaincontactchange()">
-<option value="">{$LANG.usedefaultcontact}</option>
-{foreach from=$domaincontacts item=domcontact}
-<option value="{$domcontact.id}"{if $contact==$domcontact.id} selected{/if}>{$domcontact.name}</option>
-{/foreach}
-<option value="addingnew"{if $contact eq "addingnew"} selected{/if}>{$LANG.clientareanavaddcontact}...</option>
-</select><br /><br />
-<div class="signupfields{if $contact neq "addingnew"} hidden{/if}" id="domaincontactfields">
-<table width="100%" cellspacing="0" cellpadding="0" class="configtable">
-<tr><td class="fieldlabel">{$LANG.clientareafirstname}</td><td class="fieldarea"><input type="text" name="domaincontactfirstname" style="width:80%;" value="{$domaincontact.firstname}" /></td><td class="fieldlabel">{$LANG.clientareaaddress1}</td><td class="fieldarea"><input type="text" name="domaincontactaddress1" style="width:80%;" value="{$domaincontact.address1}" /></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientarealastname}</td><td class="fieldarea"><input type="text" name="domaincontactlastname" style="width:80%;" value="{$domaincontact.lastname}" /></td><td class="fieldlabel">{$LANG.clientareaaddress2}</td><td class="fieldarea"><input type="text" name="domaincontactaddress2" style="width:80%;" value="{$domaincontact.address2}" /></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareacompanyname}</td><td class="fieldarea"><input type="text" name="domaincontactcompanyname" style="width:80%;" value="{$domaincontact.companyname}" /></td><td class="fieldlabel">{$LANG.clientareacity}</td><td class="fieldarea"><input type="text" name="domaincontactcity" style="width:80%;" value="{$domaincontact.city}" /></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareaemail}</td><td class="fieldarea"><input type="text" name="domaincontactemail" style="width:90%;" value="{$domaincontact.email}" /></td><td class="fieldlabel">{$LANG.clientareastate}</td><td class="fieldarea"><input type="text" name="domaincontactstate" style="width:80%;" value="{$domaincontact.state}" /></td></tr>
-<tr><td class="fieldlabel">{$LANG.clientareaphonenumber}</td><td class="fieldarea"><input type="text" name="domaincontactphonenumber" size="20" value="{$domaincontact.phonenumber}" /></td><td class="fieldlabel">{$LANG.clientareapostcode}</td><td class="fieldarea"><input type="text" name="domaincontactpostcode" size="15" value="{$domaincontact.postcode}" /></td></tr>
-<tr><td class="fieldlabel"></td><td class="fieldarea"></td><td class="fieldlabel">{$LANG.clientareacountry}</td><td class="fieldarea">{$domaincontactcountrydropdown}</td></tr>
-</table>
-</div>
-{/if}
-
-<div class="checkoutcol1">
-
-<div class="signupfields padded">
-<h2>{$LANG.orderpromotioncode}</h2>
-{if $promotioncode}{$promotioncode} - {$promotiondescription}<br /><a href="{$smarty.server.PHP_SELF}?a=removepromo">{$LANG.orderdontusepromo}</a>{else}<input type="text" name="promocode" size="20" value="" /> <input type="submit" name="validatepromo" value="{$LANG.orderpromovalidatebutton}" />{/if}
+<div class="page-header">
+  <h1>{$LANG.domainregistrantinfo}</h1>
 </div>
 
-{if $shownotesfield}
-<div class="signupfields padded">
-<h2>{$LANG.ordernotes}</h2>
-<textarea name="notes" rows="2" style="width:100%" onFocus="if(this.value=='{$LANG.ordernotesdescription}'){ldelim}this.value='';{rdelim}" onBlur="if (this.value==''){ldelim}this.value='{$LANG.ordernotesdescription}';{rdelim}">{$notes}</textarea>
-</div>
-{/if}
-
-</div>
-<div class="checkoutcol2">
-
-<div class="signupfields padded">
-<h2>{$LANG.orderpaymentmethod}</h2>
-{foreach key=num item=gateway from=$gateways}<label><input type="radio" name="paymentmethod" value="{$gateway.sysname}" id="pgbtn{$num}" onclick="{if $gateway.type eq "CC"}showCCForm(){else}hideCCForm(){/if}"{if $selectedgateway eq $gateway.sysname} checked{/if} /> {$gateway.name}</label> {/foreach}
+<select name="contact" id="domaincontact" onchange="domaincontactchange()" class="form-control">
+  <option value="">{$LANG.usedefaultcontact}</option>
+  {foreach from=$domaincontacts item=domcontact}
+  <option value="{$domcontact.id}"{if $contact==$domcontact.id} selected{/if}>{$domcontact.name}</option>
+  {/foreach}
+  <option value="addingnew"{if $contact eq "addingnew"} selected{/if}>{$LANG.clientareanavaddcontact}...</option>
+</select>
 
 <br /><br />
+
+<div class="row" {if $contact neq "addingnew"} style="display: none;"{/if} id="domaincontactfields">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>{$LANG.clientareafirstname}</label>
+      <input type="text" name="domaincontactfirstname" class="form-control" placeholder="{$domaincontact.firstname}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientarealastname}</label>
+      <input type="text" name="domaincontactlastname" class="form-control" placeholder="{$domaincontact.lastname}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareacompanyname}</label>
+      <input type="text" name="domaincontactcompanyname" class="form-control" placeholder="{$domaincontact.companyname}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareaemail}</label>
+      <input type="text" name="domaincontactemail" class="form-control" placeholder="{$domaincontact.email}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareaphonenumber}</label>
+      <input type="text" name="domaincontactphonenumber" class="form-control" placeholder="{$domaincontact.phonenumber}" />
+    </div>
+  </div>
+  
+  
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>{$LANG.clientareaaddress1}</label>
+      <input type="text" name="domaincontactaddress1" class="form-control" placeholder="{$domaincontact.address1}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareaaddress2}</label>
+      <input type="text" name="domaincontactaddress2" class="form-control" placeholder="{$domaincontact.address2}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareacity}</label>
+      <input type="text" name="domaincontactcity" class="form-control" placeholder="{$domaincontact.city}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareastate}</label>
+      <input type="text" name="domaincontactstate" class="form-control" placeholder="{$domaincontact.state}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareapostcode}</label>
+      <input type="text" name="domaincontactpostcode" class="form-control" placeholder="{$domaincontact.postcode}" />
+    </div>
+    
+    <div class="form-group">
+      <label>{$LANG.clientareacountry}</label>
+      {$domaincontactcountrydropdown|replace:'<select':'<select class="form-control"'}
+    </div>
+  </div>
+</div>
+{/if}
+
+<div class="row">
+  
+  <div class="col-sm-6">
+    <div class="page-header">
+      <h1>{$LANG.orderpromotioncode}</h1>
+    </div>
+
+    {if $promotioncode}
+    {$promotioncode} - {$promotiondescription}<br /><a href="{$smarty.server.PHP_SELF}?a=removepromo">{$LANG.orderdontusepromo}</a>
+    {else}
+    <div class="input-group">
+      <input type="text" name="promocode" size="20" class="form-control" />
+      <div class="input-group-btn">
+        <button name="submit" type="submit" name="validatepromo" class="btn btn-danger">{$LANG.orderpromovalidatebutton}</button>
+      </div>
+    </div>
+    {/if}
+  </div>
+  
+  {if $shownotesfield}
+  <div class="col-sm-6">
+    <div class="page-header">
+      <h1>{$LANG.ordernotes}</h1>
+    </div>
+    
+    <textarea name="notes" rows="5" class="form-control" placeholder="{$LANG.ordernotesdescription}">{$notes}</textarea>
+  </div>
+  {/if}
+  
+</div>
+
+<div class="page-header">
+  <h1>{$LANG.orderpaymentmethod}</h1>
+</div>
+{foreach key=num item=gateway from=$gateways}
+<div class="radio">
+  <label>
+    <input type="radio" name="paymentmethod" value="{$gateway.sysname}" id="pgbtn{$num}" onclick="{if $gateway.type eq "CC"}showCCForm(){else}hideCCForm(){/if}"{if $selectedgateway eq $gateway.sysname} checked{/if} />
+    {$gateway.name}
+  </label>
+</div>
+{/foreach}
 
 <div id="ccinputform" class="signupfields{if $selectedgatewaytype neq "CC"} hidden{/if}">
 <table width="100%" cellspacing="0" cellpadding="0" class="configtable textleft">
@@ -261,18 +506,22 @@ function emptyCart(type,num) {
 {if $shownostore}<tr><td class="fieldlabel"><input type="checkbox" name="nostore" id="nostore" /></td><td><label for="nostore">{$LANG.creditcardnostore}</label></td></tr>{/if}
 </table>
 </div>
-
-</div>
-
-</div>
 <div class="clear"></div>
 
+<hr />
+
 {if $accepttos}
-<div align="center"><label><input type="checkbox" name="accepttos" id="accepttos" /> {$LANG.ordertosagreement} <a href="{$tosurl}" target="_blank">{$LANG.ordertos}</a></label></div>
-<br />
+<div class="radio" style="padding-left: 0px;">
+  <label>
+    <input type="checkbox" name="accepttos" id="accepttos" />
+    {$LANG.ordertosagreement} <a href="{$tosurl}" target="_blank">{$LANG.ordertos}</a>
+  </label>
+</div>
 {/if}
 
-<div align="center"><input type="submit" value="{$LANG.completeorder}"{if $cartitems==0} disabled{/if} onclick="this.value='{$LANG.pleasewait}'" class="ordernow" /></div>
+<br />
+
+<input type="submit" value="{$LANG.completeorder}"{if $cartitems==0} disabled{/if} onclick="this.value='{$LANG.pleasewait}'" class="ordernow btn btn-success" />
 
 </form>
 
@@ -282,6 +531,5 @@ function emptyCart(type,num) {
 
 {/if}
 
-<div class="cartwarningbox"><img src="images/padlock.gif" align="absmiddle" border="0" alt="Secure Transaction" /> &nbsp;{$LANG.ordersecure} (<strong>{$ipaddress}</strong>) {$LANG.ordersecure2}</div>
-
-</div>
+<br />
+<i class="fa fa-lock"></i> &nbsp;{$LANG.ordersecure} (<strong>{$ipaddress}</strong>) {$LANG.ordersecure2}
