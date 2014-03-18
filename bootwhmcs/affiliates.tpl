@@ -12,16 +12,16 @@
 
   <div class="row">
   
-    <div class="col-sm-9">
+    <div class="col-sm-8">
     
       <div class="input-group input-group-lg">
         <span class="input-group-addon"><i class="fa fa-link"></i></span>
         <input type="text" value="{$referrallink}" class="form-control" />
       </div>
-      
+      <br />
     </div>
     
-    <div class="col-sm-3">
+    <div class="col-sm-4">
     {if $withdrawrequestsent}
       <div class="alert alert-success">
         {$LANG.affiliateswithdrawalrequestsuccessful}

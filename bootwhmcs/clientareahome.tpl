@@ -67,14 +67,14 @@
   
   <div class="row">
     
-    <div class="col-md-6">
+    <div class="col-md-8">
     {if $condlinks.domainreg}<input type="submit" value="{$LANG.checkavailability}" class="btn btn-primary btn-lg" />{/if}
     {if $condlinks.domaintrans}<input type="submit" name="transfer" value="{$LANG.domainstransfer}" class="btn btn-success btn-lg" />{/if}
     {if $condlinks.domainown}<input type="submit" name="hosting" value="{$LANG.domaincheckerhostingonly}" class="btn btn-danger btn-lg" />{/if}
     </div>
   
     {if $captcha}
-    <div class="col-md-6">
+    <div class="col-md-4">
       <p>{$LANG.captchaverify}</p>
     
     
@@ -94,8 +94,8 @@
 
 <br />
 
+<h3 class="pull-left">{$LANG.supportticketsopentickets} <span class="badge badge-info">{$clientsstats.numactivetickets}</span></h3>
 <a class="btn btn-danger pull-right" href="submitticket.php"><i class="icon-comment"></i> {$LANG.opennewticket}</a>
-<h3>{$LANG.supportticketsopentickets} <span class="badge badge-info">{$clientsstats.numactivetickets}</span></h3>
 
 <br />
 
