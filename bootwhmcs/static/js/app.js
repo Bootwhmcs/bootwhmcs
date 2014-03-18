@@ -60,11 +60,23 @@ jQuery(document).ready(function(){
     return false;
   });
   
+  // Facebook 100% Width
+  // ===============================
+  var foundFBComs = false;
+  $('.fb-comments-unloaded').each(function(){
+    var $fbCom = $(this),
+    contWidth = $fbCom.parent().width();
+  
+    $fbCom.attr('data-width', contWidth).removeClass('fb-comments-unloaded').addClass('fb-comments');
+    foundFBComs = true;
+  });
+  
+  if(foundFBComs) {
+    FB.XFBML.parse();
+  }
+  
   // Open Centered Popup
   // ===============================
-  
-  
-  
   function popupWindow(addr,popname,w,h,features) {
     var winl = (screen.width-w)/2;
     var wint = (screen.height-h)/2;

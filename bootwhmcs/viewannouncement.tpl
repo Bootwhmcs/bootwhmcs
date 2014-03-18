@@ -34,5 +34,5 @@
 <hr />
 
 {if $facebookcomments}
-<fb:comments href="{$systemurl}{if $seofriendlyurls}announcements/{$id}/{$urlfriendlytitle}.html{else}announcements.php?id={$id}{/if}" num_posts="5"></fb:comments>
+<fb:comments href="{$systemurl}{if $seofriendlyurls}announcements/{$id}/{$urlfriendlytitle}.html{else}announcements.php?id={$id}{/if}" num_posts="5" class="fb-comments-unloaded"></fb:comments>
 {/if}

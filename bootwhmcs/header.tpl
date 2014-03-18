@@ -123,11 +123,11 @@
             <li><a href="announcements.php">{$LANG.announcementstitle}</a></li>
             <li><a href="knowledgebase.php">{$LANG.knowledgebasetitle}</a></li>
             <li><a href="serverstatus.php">{$LANG.networkstatustitle}</a></li>
-            {if $condlinks.affiliates}<li><a href="affiliates.php">{$LANG.affiliatestitle}</a></li>{/if}
-            <li><a href="contact.php">{$LANG.contactus}</a></li>
+            {if $condlinks.affiliates}<li class="hidden-sm"><a href="affiliates.php">{$LANG.affiliatestitle}</a></li>{/if}
+            <li class="hidden-sm"><a href="contact.php">{$LANG.contactus}</a></li>
             
             {/if}
-            <li><a href="submitticket.php">{$LANG.navopenticket}</a></li>
+            <li class="hidden-sm hidden-md"><a href="submitticket.php">{$LANG.navopenticket}</a></li>
           </ul>
           
           <!-- Account / Right Dropdown -->
