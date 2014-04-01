@@ -1,13 +1,16 @@
 {include file="$template/pageheader.tpl" title=$LANG.domaintitle desc=$LANG.domaincheckerintro}
 
 {if $inccode}
-<div class="alert alert-danger">
-  {$LANG.captchaverifyincorrect}
-</div>
+  <div class="alert alert-danger">
+    {$LANG.captchaverifyincorrect}
+  </div>
 {/if}
 
 {if $bulkdomainsearchenabled}
-<p align="right"><a href="domainchecker.php?search=bulkregister">{$LANG.domainbulksearch}</a> | <a href="domainchecker.php?search=bulktransfer">{$LANG.domainbulktransfersearch}</a></p>
+  <p align="right">
+    <strong>{$LANG.domainsimplesearch}</strong> | 
+    <a href="domainchecker.php?search=bulkregister">{$LANG.domainbulksearch}</a> | 
+    <a href="domainchecker.php?search=bulktransfer">{$LANG.domainbulktransfersearch}</a></p>
 {/if}
 
 <form method="post" action="domainchecker.php" class="form-horizontal">
@@ -106,8 +109,6 @@
 
 {include file="$template/pageheader.tpl" title=$LANG.domainspricing}
 
-<div class="center80">
-
 <table class="table table-striped table-framed">
     <thead>
         <tr>
@@ -138,8 +139,6 @@
 {/foreach}</select> <input type="submit" value="{$LANG.go}" /></p>
 </form>
 {/if}
-
-</div>
 
 {/if}
 
