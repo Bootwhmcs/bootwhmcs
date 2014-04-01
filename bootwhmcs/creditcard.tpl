@@ -49,7 +49,7 @@ function autoForward() {
     <div class="col2half">
         <div class="internalpadding">
 
-            {include file="$template/subheader.tpl" title=$LANG.creditcardyourinfo}
+            {include file="$template/pageheader.tpl" title=$LANG.creditcardyourinfo}
 
             <div class="control-group">
                 <label class="control-label" for="firstname">{$LANG.clientareafirstname}</label>
@@ -120,7 +120,7 @@ function autoForward() {
     <div class="col2half">
         <div class="internalpadding">
 
-            {include file="$template/subheader.tpl" title=$LANG.creditcarddetails}
+            {include file="$template/pageheader.tpl" title=$LANG.creditcarddetails}
 
             <p><label class="full control-label"><input type="radio" class="radio inline" name="ccinfo" value="useexisting" onclick="disableFields('newccinfo',true)"{if $cardnum} checked{else} disabled{/if} /> {$LANG.creditcarduseexisting}{if $cardnum} ({$cardnum}){/if}</label></p>
 {if $cardnum}

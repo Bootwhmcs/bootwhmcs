@@ -68,7 +68,7 @@
 
 {if $servers}
 
-{include file="$template/subheader.tpl" title=$LANG.serverstatustitle}
+{include file="$template/pageheader.tpl" title=$LANG.serverstatustitle}
 
 <p>{$LANG.serverstatusheadingtext}</p>
 

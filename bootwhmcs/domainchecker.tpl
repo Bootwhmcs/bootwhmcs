@@ -104,7 +104,7 @@
 
 {else}
 
-{include file="$template/subheader.tpl" title=$LANG.domainspricing}
+{include file="$template/pageheader.tpl" title=$LANG.domainspricing}
 
 <div class="center80">
 

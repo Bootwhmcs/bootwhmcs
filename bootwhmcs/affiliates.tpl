@@ -124,7 +124,7 @@
   </ul>
   
   {if $affiliatelinkscode}
-  {include file="$template/subheader.tpl" title=$LANG.affiliateslinktous}
+  {include file="$template/pageheader.tpl" title=$LANG.affiliateslinktous}
   {$affiliatelinkscode}
   {/if}
 
