@@ -13,7 +13,7 @@
     <tr>
       <td>{$email.date}</td>
       <td>{$email.subject}</td>
-      <td class="text-right"><a href="viewemail.php?id={$email.id}" class="btn btn-danger btn-xs">{$LANG.emailviewmessage}</a></td>
+      <td class="text-right"><a href="viewemail.php?id={$email.id}" class="btn btn-danger btn-xs" onclick="window.open('viewemail.php?id={$email.id}','','width=650,height=400,scrollbars=yes'); return false">{$LANG.emailviewmessage}</a></td>
     </tr>
     {foreachelse}
     <tr>
