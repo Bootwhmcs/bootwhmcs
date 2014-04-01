@@ -2,7 +2,7 @@
 
 {if $invalidlink}
 
-  <div class="errorbox">
+  <div class="alert alert-danger">
     {$invalidlink}
   </div>
   <br /><br /><br /><br />
@@ -10,7 +10,7 @@
 {elseif $success}
 
   <br />
-  <div class="successbox">
+  <div class="alert alert-success">
     {$LANG.pwresetvalidationsuccess}
   </div>
 
@@ -24,7 +24,7 @@
 
 {if $errormessage}
 
-  <div class="errorbox">
+  <div class="alert alert-danger">
     {$errormessage}
   </div>
   
