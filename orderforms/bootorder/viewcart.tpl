@@ -60,16 +60,16 @@ function emptyCart(type,num) {
           {foreach key=confnum item=configoption from=$product.configoptions}&nbsp;&raquo; {$configoption.name}: {if $configoption.type eq 1 || $configoption.type eq 2}{$configoption.option}{elseif $configoption.type eq 3}{if $configoption.qty}{$LANG.yes}{else}{$LANG.no}{/if}{elseif $configoption.type eq 4}{$configoption.qty} x {$configoption.option}{/if}<br />{/foreach}
           {/if}
           <a href="{$smarty.server.PHP_SELF}?a=confproduct&i={$num}" class="cartedit"><i class="fa fa-pencil"></i> {$LANG.carteditproductconfig}</a> <a href="#" onclick="removeItem('p','{$num}');return false" class="cartremove"><i class="fa fa-trash-o"></i> {$LANG.cartremove}</a>
-          
+
           {if $product.allowqty}
           <input type="text" name="qty[{$num}]" size="3" value="{$product.qty}" />
           <button name="submit" type="submit"><i class="fa fa-refresh"></i></button>
           {/if}
         </td>
-        
+
         <td class="textcenter"><strong>{$product.pricingtext}{if $product.proratadate}<br />({$LANG.orderprorata} {$product.proratadate}){/if}</strong></td>
       </tr>
-      
+
       {foreach key=addonnum item=addon from=$product.addons}
       <tr class="carttableproduct">
         <td><strong>{$LANG.orderaddon}</strong> - {$addon.name}</td><td class="textcenter"><strong>{$addon.pricingtext}</strong></td>
@@ -155,24 +155,24 @@ function emptyCart(type,num) {
 <br /><br />
 
 <div class="page-header">
-  
+
   <h1>{$LANG.yourdetails}</h1>
-  
+
   <ul class="pull-right nav nav-tabs" style="margin-top: -32px;">
     <li class="{if !$loggedin && $custtype neq "existing"}active{/if}"><a href="#newcustomer" data-toggle="tab">{$LANG.newcustomer}</a></li>
     <li class="{if $custtype eq "existing" && !$loggedin || $loggedin}active{/if}"><a href="#existingcustomer" data-toggle="tab">{$LANG.existingcustomer}</a></li>
   </ul>
-  
+
 </div>
 
 <div class="tab-content">
 
   <div class="tab-pane{if !$loggedin && $custtype neq "existing"} active{/if}" id="newcustomer">
-  
+
     <div class="row">
-    
+
       <div class="col-sm-6">
-      
+
         <div class="form-group">
           <label for="firstname">{$LANG.clientareafirstname}</label>
           {if $loggedin}
@@ -181,7 +181,7 @@ function emptyCart(type,num) {
           <input type="text" name="firstname" tabindex="1" class="form-control" placeholder="{$clientsdetails.firstname}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="lastname">{$LANG.clientarealastname}</label>
           {if $loggedin}
@@ -190,7 +190,7 @@ function emptyCart(type,num) {
           <input type="text" name="lastname" tabindex="2" class="form-control" placeholder="{$clientsdetails.lastname}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareacompanyname}</label>
           {if $loggedin}
@@ -199,7 +199,7 @@ function emptyCart(type,num) {
           <input type="text" name="companyname" tabindex="3" class="form-control" placeholder="{$clientsdetails.companyname}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareaemail}</label>
           {if $loggedin}
@@ -208,18 +208,18 @@ function emptyCart(type,num) {
           <input type="text" name="email" tabindex="4" class="form-control" placeholder="{$clientsdetails.email}" />
           {/if}
         </div>
-        
+
         {if !$loggedin}
         <div class="row">
-        
+
           <div class="col-sm-6">
             <div class="form-group">
-              
+
               <label for="">{$LANG.clientareapassword}</label>
               <input type="password" name="password" tabindex="5" id="password" class="form-control" placeholder="{$password}" />
             </div>
           </div>
-          
+
           <div class="col-sm-6">
             <div class="form-group">
               <label for="">{$LANG.clientareaconfirmpassword}</label>
@@ -227,17 +227,17 @@ function emptyCart(type,num) {
             </div>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label for="passstrength">{$LANG.pwstrength}</label>
           <div id="pwstrengthbox">{$LANG.pwstrengthenter}</div>
         </div>
         {/if}
-        
+
       </div>
-      
+
       <div class="col-sm-6">
-      
+
         <div class="form-group">
           <label for="address1">{$LANG.clientareaaddress1}</label>
           {if $loggedin}
@@ -246,7 +246,7 @@ function emptyCart(type,num) {
           <input type="text" name="address1" tabindex="7" class="form-control" placeholder="{$clientsdetails.address1}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareaaddress2}</label>
           {if $loggedin}
@@ -255,7 +255,7 @@ function emptyCart(type,num) {
           <input type="text" name="address2" tabindex="8" class="form-control" placeholder="{$clientsdetails.address2}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareacity}</label>
           {if $loggedin}
@@ -264,7 +264,7 @@ function emptyCart(type,num) {
           <input type="text" name="city" tabindex="9" class="form-control" placeholder="{$clientsdetails.city}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareastate}</label>
           {if $loggedin}
@@ -273,7 +273,7 @@ function emptyCart(type,num) {
           <input type="text" name="state" tabindex="10" class="form-control" placeholder="{$clientsdetails.state}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareapostcode}</label>
           {if $loggedin}
@@ -282,7 +282,7 @@ function emptyCart(type,num) {
           <input type="text" name="postcode" tabindex="11" class="form-control" placeholder="{$clientsdetails.postcode}" />
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareacountry}</label>
           {if $loggedin}
@@ -291,7 +291,7 @@ function emptyCart(type,num) {
           {$clientcountrydropdown|replace:'<select':'<select tabindex="12" class="form-control"'}
           {/if}
         </div>
-        
+
         <div class="form-group">
           <label for="">{$LANG.clientareaphonenumber}</label>
           {if $loggedin}
@@ -300,53 +300,53 @@ function emptyCart(type,num) {
           <input type="text" name="phonenumber" tabindex="13" class="form-control" placeholder="{$clientsdetails.phonenumber}" />
           {/if}
         </div>
-      
+
       </div>
-      
+
     </div>
-    
+
+    {if $customfields || $securityquestions}
+    {if $securityquestions && !$loggedin}
+    <div class="form-group">
+      <label for="securityquid">{$LANG.clientareasecurityquestion}</label>
+      <select name="securityqid" tabindex="14" class="form-control">
+        {foreach key=num item=question from=$securityquestions}
+        <option value={$question.id}>{$question.question}</option>
+        {/foreach}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="securityqans">{$LANG.clientareasecurityanswer}</label>
+      <input type="password" name="securityqans" tabindex="15" class="form-control">
+    </div>
+    {/if}
+
+    {foreach key=num item=customfield from=$customfields}
+    <div class="form-group">
+      <label for="">{$customfield.name}</label>
+      {$customfield.input|replace:'<input':'<input class="form-control"'}
+      <p class="help-block">{$customfield.description}</p>
+    {/foreach}
+    {/if}
+
   </div>
-  
+
   <div class="tab-pane{if $custtype eq "existing" && !$loggedin || $loggedin} active{/if}" id="existingcustomer">
-    
+
     <div class="form-group">
       <label for="loginemail">{$LANG.clientareaemail}</label>
       <input type="text" name="loginemail" class="form-control" />
     </div>
-    
+
     <div class="form-group">
       <label for="loginpw">{$LANG.clientareapassword}</label>
       <input type="password" name="loginpw" class="form-control" />
     </div>
-    
-  </div> 
+
+  </div>
 
 </div>
-
-{if $customfields || $securityquestions}
-{if $securityquestions && !$loggedin}
-<div class="form-group">
-  <label for="securityquid">{$LANG.clientareasecurityquestion}</label>
-  <select name="securityqid" tabindex="14" class="form-control">
-    {foreach key=num item=question from=$securityquestions}
-    <option value={$question.id}>{$question.question}</option>
-    {/foreach}
-  </select>
-</div>
-
-<div class="form-group">
-  <label for="securityqans">{$LANG.clientareasecurityanswer}</label>
-  <input type="password" name="securityqans" tabindex="15" class="form-control">
-</div>
-{/if}
-
-{foreach key=num item=customfield from=$customfields}
-<div class="form-group">
-  <label for="">{$customfield.name}</label>
-  {$customfield.input|replace:'<input':'<input class="form-control"'}
-  <p class="help-block">{$customfield.description}</p>
-{/foreach}
-{/if}
 
 {if $taxenabled && !$loggedin}
 <div class="alert alert-warning">{$LANG.carttaxupdateselections} <input type="submit" value="{$LANG.carttaxupdateselectionsupdate}" name="updateonly" /></div>
@@ -373,55 +373,55 @@ function emptyCart(type,num) {
       <label>{$LANG.clientareafirstname}</label>
       <input type="text" name="domaincontactfirstname" class="form-control" placeholder="{$domaincontact.firstname}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientarealastname}</label>
       <input type="text" name="domaincontactlastname" class="form-control" placeholder="{$domaincontact.lastname}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareacompanyname}</label>
       <input type="text" name="domaincontactcompanyname" class="form-control" placeholder="{$domaincontact.companyname}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareaemail}</label>
       <input type="text" name="domaincontactemail" class="form-control" placeholder="{$domaincontact.email}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareaphonenumber}</label>
       <input type="text" name="domaincontactphonenumber" class="form-control" placeholder="{$domaincontact.phonenumber}" />
     </div>
   </div>
-  
-  
+
+
   <div class="col-sm-6">
     <div class="form-group">
       <label>{$LANG.clientareaaddress1}</label>
       <input type="text" name="domaincontactaddress1" class="form-control" placeholder="{$domaincontact.address1}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareaaddress2}</label>
       <input type="text" name="domaincontactaddress2" class="form-control" placeholder="{$domaincontact.address2}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareacity}</label>
       <input type="text" name="domaincontactcity" class="form-control" placeholder="{$domaincontact.city}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareastate}</label>
       <input type="text" name="domaincontactstate" class="form-control" placeholder="{$domaincontact.state}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareapostcode}</label>
       <input type="text" name="domaincontactpostcode" class="form-control" placeholder="{$domaincontact.postcode}" />
     </div>
-    
+
     <div class="form-group">
       <label>{$LANG.clientareacountry}</label>
       {$domaincontactcountrydropdown|replace:'<select':'<select class="form-control"'}
@@ -431,7 +431,7 @@ function emptyCart(type,num) {
 {/if}
 
 <div class="row">
-  
+
   <div class="col-sm-6">
     <div class="page-header">
       <h1>{$LANG.orderpromotioncode}</h1>
@@ -448,17 +448,17 @@ function emptyCart(type,num) {
     </div>
     {/if}
   </div>
-  
+
   {if $shownotesfield}
   <div class="col-sm-6">
     <div class="page-header">
       <h1>{$LANG.ordernotes}</h1>
     </div>
-    
+
     <textarea name="notes" rows="5" class="form-control" placeholder="{$LANG.ordernotesdescription}">{$notes}</textarea>
   </div>
   {/if}
-  
+
 </div>
 
 <div class="page-header">

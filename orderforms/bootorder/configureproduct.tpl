@@ -1,3 +1,6 @@
+<script type="text/javascript" src="includes/jscript/jqueryui.js"></script>
+<script type="text/javascript" src="templates/orderforms/{$carttpl}/static/app.js"></script>
+
 <form id="orderfrm">
   <input type="hidden" name="configure" value="true" />
   <input type="hidden" name="i" value="{$i}" />
@@ -8,7 +11,7 @@
 
   {if $pricing.type eq "recurring"}
   <h3>{$LANG.cartchoosecycle}</h3>
-  
+
   {if $pricing.monthly}
   <div class="radio">
     <label>
@@ -17,7 +20,7 @@
     </label>
   </div>
   {/if}
-  
+
   {if $pricing.quarterly}
   <div class="radio">
     <label>
@@ -26,7 +29,7 @@
     </label>
   </div>
   {/if}
-  
+
   {if $pricing.semiannually}
   <div class="radio">
     <label>
@@ -35,7 +38,7 @@
     </label>
   </div>
   {/if}
-  
+
   {if $pricing.annually}
   <div class="radio">
     <label>
@@ -44,7 +47,7 @@
     </label>
   </div>
   {/if}
-  
+
   {if $pricing.biennially}
   <div class="radio">
     <label>
@@ -53,7 +56,7 @@
     </label>
   </div>
   {/if}
-  
+
   {if $pricing.triennially}
   <div class="radio">
     <label>
@@ -63,10 +66,9 @@
   </div>
   {/if}
 {/if}
-</form>
 
 <hr />
-  
+
 
 {if $productinfo.type eq "server"}
 <h3>{$LANG.cartconfigserver}</h3>
@@ -159,18 +161,14 @@
 </div>
 {/if}
 
-</div>
-<div class="prodconfigcol2">
-
 <h3>{$LANG.ordersummary}</h3>
 <div class="ordersummary" id="producttotal"></div>
-
+<hr />
 <input type="button" value="{$LANG.checkout} &raquo;" class="checkout btn btn-success" onclick="addtocart();" />
 <input type="button" value="{$LANG.continueshopping}" class="btn btn-primary" onclick="addtocart('{$productinfo.gid}');" />
 <input type="button" value="{$LANG.viewcart}" class="btn btn-danger" onclick="window.location='cart.php?a=view'" />
 
 </div>
-<div class="clear"></div>
 
 <script language="javascript">recalctotals();</script>
 

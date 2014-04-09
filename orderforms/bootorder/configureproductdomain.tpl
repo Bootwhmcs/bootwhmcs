@@ -3,11 +3,11 @@
 <p>{$LANG.cartmakedomainselection}</p>
 
 <form onsubmit="checkdomain();return false">
-  
+
   <div class="domainoptions">
-    
+
     <hr />
-      
+
     {if $incartdomains}
     <div class="well well-sm">
       <div class="radio">
@@ -16,9 +16,9 @@
           <strong>{$LANG.cartproductdomainuseincart}</strong>
         </label>
       </div>
-      
+
       <div class="domainreginput row" id="domainincart">
-        
+
         <div class="col-sm-5">
           <select id="incartsld" class="form-control">
             {foreach key=num item=incartdomain from=$incartdomains}
@@ -26,14 +26,14 @@
             {/foreach}
           </select>
         </div>
-        
+
         <div class="col-sm-4">
           <input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-primary" />
         </div>
       </div>
     </div>
     {/if}
-    
+
     {if $registerdomainenabled}
     <div class="well well-sm">
       <div class="radio">
@@ -42,18 +42,18 @@
           <strong>{$LANG.cartregisterdomainchoice|sprintf2:$companyname}</strong>
         </label>
       </div>
-      
+
       <div class="domainreginput" id="domainregister">
-        
+
         <div class="input-group">
           <div class="input-group-addon">www.</div>
           <input type="text" id="registersld" size="30" value="{$sld}" class="form-control" />
         </div>
-        
+
         <br />
-      
+
         <div class="row">
-        
+
           <div class="col-sm-4">
             <select id="registertld" class="form-control">
               {foreach key=num item=listtld from=$registertlds}
@@ -61,7 +61,7 @@
               {/foreach}
             </select>
           </div>
-          
+
           <div class="col-sm-3">
             <input type="submit" value="{$LANG.checkavailability}" class="btn btn-primary" />
           </div>
@@ -69,7 +69,7 @@
       </div>
     </div>
     {/if}
-    
+
     {if $transferdomainenabled}
     <div class="well well-sm">
       <div class="radio">
@@ -78,18 +78,18 @@
           <strong>{$LANG.carttransferdomainchoice|sprintf2:$companyname}</strong>
         </label>
       </div>
-  
+
       <div class="domainreginput" id="domaintransfer">
-      
+
         <div class="input-group">
           <div class="input-group-addon">www.</div>
           <input type="text" id="transfersld" value="{$sld}" class="form-control" />
         </div>
-        
+
         <br />
-        
+
         <div class="row">
-        
+
           <div class="col-sm-4">
             <select id="transfertld" class="form-control">
               {foreach key=num item=listtld from=$transfertlds}
@@ -97,7 +97,7 @@
               {/foreach}
             </select>
           </div>
-          
+
           <div class="col-sm-4">
             <input type="submit" value="{$LANG.checkavailability}" class="btn btn-block btn-primary" />
           </div>
@@ -105,7 +105,7 @@
       </div>
     </div>
     {/if}
-    
+
     {if $owndomainenabled}
     <div class="well well-sm">
       <div class="radio">
@@ -114,7 +114,7 @@
           <strong>{$LANG.cartexistingdomainchoice|sprintf2:$companyname}</strong>
         </label>
       </div>
-      
+
       <div class="domainreginput" id="domainowndomain">
         <div class="input-group">
           <div class="input-group-addon">www.</div>
@@ -122,9 +122,9 @@
           <div class="input-group-addon">.</div>
           <input type="text" id="owndomaintld" size="5" value="{$tld|substr:1}" class="form-control" />
         </div>
-        
+
         <br />
-        
+
         <input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-danger" />
       </div>
     </div>
@@ -147,20 +147,20 @@
             <select id="subdomaintld">{foreach from=$subdomains key=subid item=subdomain}<option value="{$subid}">{$subdomain}</option>{/foreach}</select>
           </div>
         </div>
-        
+
         <br />
-          
+
         <input type="submit" value="{$LANG.ordercontinuebutton}" class="btn btn-danger" />
       </div>
     </div>
     {/if}
 
     {if $freedomaintlds}<p>* <em>{$LANG.orderfreedomainregistration} {$LANG.orderfreedomainappliesto}: {$freedomaintlds}</em></p>{/if}
-  
+
   </div>
 
 </form>
- 
+
 <div id="greyout"></div>
 
 <div id="domainpopupcontainer" style="display: none;">
