@@ -11,13 +11,13 @@
 
 {if $save}
     {if $errors}
-        <div class="errorbox">
+        <div class="alert alert-danger">
         {foreach from=$errors item=error}
             {$error}<br />
         {/foreach}
         </div>
     {else}
-        <div class="successbox">{$LANG.changessavedsuccessfully}</div>
+        <div class="alert alert-success">{$LANG.changessavedsuccessfully}</div>
     {/if}
 {/if}
 
@@ -58,7 +58,7 @@ function usecustomns() {
 <h2>{$LANG.domainautorenewstatus}</h2>
 
 {if $save}
-    <div class="successbox">{$LANG.changessavedsuccessfully}</div>
+    <div class="alert alert-success">{$LANG.changessavedsuccessfully}</div>
 {/if}
 
 <p>{$LANG.domainautorenewinfo}</p>
@@ -82,13 +82,13 @@ function usecustomns() {
 
 {if $save}
     {if $errors}
-        <div class="errorbox">
+        <div class="alert alert-danger">
         {foreach from=$errors item=error}
             {$error}<br />
         {/foreach}
         </div>
     {else}
-        <div class="successbox">{$LANG.changessavedsuccessfully}</div>
+        <div class="alert alert-success">{$LANG.changessavedsuccessfully}</div>
     {/if}
 {/if}
 
@@ -113,13 +113,13 @@ function usecustomns() {
 
 {if $save}
     {if $errors}
-        <div class="errorbox">
+        <div class="alert alert-danger">
         {foreach from=$errors item=error}
             {$error}<br />
         {/foreach}
         </div>
     {else}
-        <div class="successbox">{$LANG.changessavedsuccessfully}</div>
+        <div class="alert alert-success">{$LANG.changessavedsuccessfully}</div>
     {/if}
 {/if}
 
@@ -172,7 +172,7 @@ function usecustomwhois(id) {
 
 {foreachelse}
 
-<div class="errorbox">
+<div class="alert alert-danger">
     {$LANG.domainbulkmanagementnotpossible}
 </div>
 
