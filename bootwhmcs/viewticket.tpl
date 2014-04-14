@@ -19,7 +19,7 @@
 
   <div class="row">
     <div class="col-md-3">
-      <h3>{$date}</h3>
+      <h2>{$date}</h2>
       {$LANG.supportticketsubmitted}
     </div>
     
