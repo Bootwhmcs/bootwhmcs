@@ -107,5 +107,59 @@ jQuery(document).ready(function(){
     jQuery("#fileuploads").append('<input type="file" name="attachments[]" style="width:70%;" /><br />');
     return false;
   });
+
+  // Support Tickets
+  // ===============================
+  jQuery("tr.rating").on("mouseout", function(){
+    jQuery(this).find(".star i").each(function(){
+      this.className = 'fa fa-star-o';
+    });
+  });
+
+  jQuery("tr.rating .star").on("mouseover", function(){
+    rating_hover(this.id);
+  });
+
+  jQuery("tr.rating .star").on('click', function(e){
+    var $this = jQuery(this),
+        tid   = $this.data('tid'),
+        c     = $this.data('c'),
+        id    = $this.attr('id');
+    rating_select(tid, c, id); 
+  });
+
+  jQuery("tr.rating .point").on("mouseover", function(){
+    var $this = jQuery(this),
+        id    = $this.data("reply");
+
+    if ($this.hasClass("low")) {
+      rating_hover("rate"+id+"_1");
+    } else {
+      rating_hover("rate"+id+"_5");
+    }
+  });
+
+  jQuery("tr.rating .point").on('click', function(e){
+    var $this = jQuery(this),
+        tid   = $this.data('tid'),
+        c     = $this.data('c'),
+        reply = $this.data('reply');
+    rating_select(tid, c, "rate"+reply+"_"+($this.hasClass("low") ? "1" : "5"));
+  });
+
+  function rating_hover(id) {
+    var selrating = id.split('_');
+    for(var i=1; i<=5; i++){
+      if (i <= selrating[1]) {
+        jQuery('#'+selrating[0]+'_'+i+" i").removeClass('fa-star-o').addClass('fa-star');
+      } else {
+        jQuery('#'+selrating[0]+'_'+i+" i").removeClass('fa-star').addClass('fa-star-o');
+      }
+    }
+  }
+
+  function rating_select(tid,c,id){
+    window.location='viewticket.php?tid='+tid+'&c='+c+'&rating='+id;
+  }
   
 });

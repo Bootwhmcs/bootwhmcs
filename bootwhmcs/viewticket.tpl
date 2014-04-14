@@ -136,19 +136,19 @@
           <tr>
               <td>{$LANG.ticketreatinggiven}&nbsp;</td>
               {foreach from=$ratings item=rating}
-              <td background="images/rating_{if $reply.rating>=$rating}pos{else}neg{/if}.png"></td>
+              <td class="star"><i class="fa fa-star{if $reply.rating<$rating}-o{/if}"></i></td>
               {/foreach}
           </tr>
       </table>
       {else}
-      <table class="ticketrating" align="right">
-          <tr onmouseout="rating_leave('rate{$reply.id}')">
+      <table id="rate{$reply.id}" class="ticketrating" align="right">
+          <tr class="rating">
               <td>{$LANG.ticketratingquestion}&nbsp;</td>
-              <td class="point" onmouseover="rating_hover('rate{$reply.id}_1')" onclick="rating_select('{$tid}','{$c}','rate{$reply.id}_1')"><strong>{$LANG.ticketratingpoor}&nbsp;</strong></td>
+              <td class="point low" data-reply="{$reply.id}" data-tid="{$tid}" data-c="{$c}"><strong>{$LANG.ticketratingpoor}&nbsp;</strong></td>
               {foreach from=$ratings item=rating}
-              <td class="star" id="rate{$reply.id}_{$rating}" onmouseover="rating_hover(this.id)" onclick="rating_select('{$tid}','{$c}',this.id)"></td>
+              <td class="star" id="rate{$reply.id}_{$rating}" data-tid="{$tid}" data-c="{$c}"><i class="fa fa-star-o"></i></td>
               {/foreach}
-              <td class="point" onmouseover="rating_hover('rate{$reply.id}_5')" onclick="rating_select('{$tid}','{$c}','rate{$reply.id}_5')"><strong>&nbsp;{$LANG.ticketratingexcellent}</strong></td>
+              <td class="point high" data-reply="{$reply.id}" data-tid="{$tid}" data-c="{$c}"><strong>&nbsp;{$LANG.ticketratingexcellent}</strong></td>
           </tr>
       </table>
       {/if}
