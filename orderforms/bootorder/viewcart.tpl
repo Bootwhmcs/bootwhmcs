@@ -327,6 +327,7 @@ function emptyCart(type,num) {
       <label for="">{$customfield.name}</label>
       {$customfield.input|replace:'<input':'<input class="form-control"'}
       <p class="help-block">{$customfield.description}</p>
+    </div>
     {/foreach}
     {/if}
 
