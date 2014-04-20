@@ -15,7 +15,7 @@
 
 <h3>{$domain.domain} - {$domain.regperiod} {$LANG.orderyears} {if $domain.hosting}<span style="color:#009900;">[{$LANG.cartdomainshashosting}]</span>{else}<a href="cart.php" style="color:#cc0000;">[{$LANG.cartdomainsnohosting}]</a>{/if}</h3>
 
-<div id="domainconfig">
+<div id="domainconfig" class="well well-sm">
 
 <table>
 <tr><td width="120">Hosting:</td><td>{if $domain.hosting}<span style="color:#009900;">[{$LANG.cartdomainshashosting}]</span>{else}<a href="cart.php" style="color:#cc0000;">[{$LANG.cartdomainsnohosting}]</a><br />{/if}</td></tr>
@@ -49,7 +49,7 @@
 </div>
 {/if}
 
-<p align="center"><input type="submit" value="{$LANG.updatecart}" /></p>
+<input type="submit" value="{$LANG.updatecart}" class="btn btn-success" />
 
 </form>
 
