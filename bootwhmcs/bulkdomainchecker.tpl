@@ -8,7 +8,7 @@
 {/if}
 
 {if $inccode}
-  <div class="errorbox">{$LANG.captchaverifyincorrect}</div>
+  <div class="alert alert-danger">{$LANG.captchaverifyincorrect}</div>
 {/if}
 
 <div class="row">
