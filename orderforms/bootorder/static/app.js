@@ -1,6 +1,5 @@
 jQuery(document).ready(function(){
   jQuery("#existingcustomer").click(function(){
-    console.log('hello');
     jQuery("#custtype").val("existing");
   });
   jQuery("#newcustomer").click(function(){
