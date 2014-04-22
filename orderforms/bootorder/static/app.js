@@ -1,24 +1,11 @@
 jQuery(document).ready(function(){
-    jQuery("#existingcust").click(function(){
-        if (jQuery(this).hasClass('active')!=true) {
-            jQuery(".signuptype").removeClass('active');
-            jQuery(this).addClass('active');
-            jQuery("#signupfrm").fadeToggle('fast',function(){
-                jQuery("#loginfrm").fadeToggle('fast');
-            });
-            jQuery("#custtype").val("existing");
-        }
-    });
-    jQuery("#newcust").click(function(){
-        if (jQuery(this).hasClass('active')!=true) {
-            jQuery(".signuptype").removeClass('active');
-            jQuery(this).addClass('active');
-            jQuery("#loginfrm").fadeToggle('fast',function(){
-                jQuery("#signupfrm").fadeToggle('fast');
-            });
-            jQuery("#custtype").val("new");
-        }
-    });
+  jQuery("#existingcustomer").click(function(){
+    console.log('hello');
+    jQuery("#custtype").val("existing");
+  });
+  jQuery("#newcustomer").click(function(){
+    jQuery("#custtype").val("new");
+  });
 });
 
 function showcats() {
