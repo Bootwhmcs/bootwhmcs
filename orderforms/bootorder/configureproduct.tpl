@@ -7,7 +7,7 @@
 
   {if !$firstconfig || $firstconfig && !$domain}<h1>{$LANG.orderconfigure}</h1>{/if}
 
-  <div id="configproducterror" class="errorbox"></div>
+  <div id="configproducterror" class="alert alert-danger"></div>
 
   {if $pricing.type eq "recurring"}
   <h3>{$LANG.cartchoosecycle}</h3>
