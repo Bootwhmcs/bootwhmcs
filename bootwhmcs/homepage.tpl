@@ -18,11 +18,18 @@
       </div>
     
       {if $captcha}
-      <div class="col-md-6 text-right">
+      <div class="col-md-4">
         {if $captcha eq "recaptcha"}
         <p>{$recaptchahtml}</p>
         {else}
-        <p><img src="includes/verifyimage.php" align="middle" /> <input type="text" name="code" class="input-small" maxlength="5" /></p>
+        <div class="row">
+          <div class="col-md-4 text-right">
+            <img src="includes/verifyimage.php" align="middle" style="margin-top: 6px;" />
+          </div>
+          <div class="col-md-8">
+            <input type="text" name="code" class="form-control" maxlength="5" />
+          </div>
+        </div>
         {/if}
       </div>
       {/if}
