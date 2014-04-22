@@ -1,4 +1,3 @@
-<script type="text/javascript" src="templates/orderforms/{$carttpl}/static/app.js"></script>
 <script type="text/javascript" src="includes/jscript/statesdropdown.js"></script>
 <script type="text/javascript" src="includes/jscript/pwstrength.js"></script>
 {literal}
