@@ -33,12 +33,12 @@
 
 {if $prevpage || $nextpage}
 
-<div style="float: left; width: 200px;">
-{if $prevpage}<a href="announcements.php?page={$prevpage}">{/if}&laquo; {$LANG.previouspage}{if $prevpage}</a>{/if}
-</div>
-
-<div style="float: right; width: 200px; text-align: right;">
-{if $nextpage}<a href="announcements.php?page={$nextpage}">{/if}{$LANG.nextpage} &raquo;{if $nextpage}</a>{/if}
-</div>
+  <div style="float: left; width: 200px;">
+  {if $prevpage}<a href="announcements.php?page={$prevpage}">{/if}&laquo; {$LANG.previouspage}{if $prevpage}</a>{/if}
+  </div>
+  
+  <div style="float: right; width: 200px; text-align: right;">
+  {if $nextpage}<a href="announcements.php?page={$nextpage}">{/if}{$LANG.nextpage} &raquo;{if $nextpage}</a>{/if}
+  </div>
 
 {/if}

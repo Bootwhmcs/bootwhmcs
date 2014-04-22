@@ -4,7 +4,8 @@
   <p align="right">
     <a href="domainchecker.php">{$LANG.domainsimplesearch}</a> | 
     <strong>{$LANG.domainbulksearch}</strong> | 
-    <a href="domainchecker.php?search=bulktransfer">{$LANG.domainbulktransfersearch}</a></p>
+    <a href="domainchecker.php?search=bulktransfer">{$LANG.domainbulktransfersearch}</a>
+  </p>
 {/if}
 
 {if $inccode}

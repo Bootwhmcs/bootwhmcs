@@ -1,5 +1,5 @@
 {if $inactive}
-
+  
   {include file="$template/pageheader.tpl" title=$LANG.affiliatestitle}
   
   <div class="alert alert-warning">
