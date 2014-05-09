@@ -159,7 +159,7 @@ function emptyCart(type,num) {
   <h1>{$LANG.yourdetails}</h1>
 
   <ul class="pull-right nav nav-tabs" style="margin-top: -32px;">
-    <li class="{if !$loggedin && $custtype neq "existing"}active{/if}" id="newcustomer"><a href="#newcustomer" data-toggle="tab">{$LANG.newcustomer}</a></li>
+    <li class="{if !$loggedin && $custtype neq "existing"}active{/if}"><a href="#newcustomer" data-toggle="tab">{$LANG.newcustomer}</a></li>
     <li class="{if $custtype eq "existing" && !$loggedin || $loggedin}active{/if}" id="existingcustomer"><a href="#existingcustomer" data-toggle="tab">{$LANG.existingcustomer}</a></li>
   </ul>
 
