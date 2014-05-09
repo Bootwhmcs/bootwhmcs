@@ -42,3 +42,38 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+table.ticketrating {
+  display: table;
+  width: auto;
+  border: 0;
+  border-spacing: 1px; /* 2px ? */
+  border-collapse: separate;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 11px;
+  -moz-box-sizing: border-box;
+  text-indent: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+}
+table.ticketrating td {
+  display: table-cell;
+  min-width: 16px;
+  line-height: 16px;
+  vertical-align: inherit;
+  text-align: inherit;
+  padding: 0;
+  border: 0;
+}
+table.ticketrating td.point {
+    cursor: pointer;
+    cursor: hand;
+}
+table.ticketrating td.star {
+    background: url('../../../images/rating_neg.png');
+    cursor: pointer;
+    cursor: hand;
+}
