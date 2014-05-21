@@ -18,7 +18,7 @@
 <div id="domainconfig" class="well well-sm">
 
 <table>
-<tr><td width="120">Hosting:</td><td>{if $domain.hosting}<span style="color:#009900;">[{$LANG.cartdomainshashosting}]</span>{else}<a href="cart.php" style="color:#cc0000;">[{$LANG.cartdomainsnohosting}]</a><br />{/if}</td></tr>
+<tr><td width="120">{$LANG.hosting}:</td><td>{if $domain.hosting}<span style="color:#009900;">[{$LANG.cartdomainshashosting}]</span>{else}<a href="cart.php" style="color:#cc0000;">[{$LANG.cartdomainsnohosting}]</a><br />{/if}</td></tr>
 <tr><td>{$LANG.orderregperiod}:</td><td>{$domain.regperiod} {$LANG.orderyears}</td></tr>
 {if $domain.eppenabled}<tr><td>{$LANG.domaineppcode}:</td><td><input type="text" name="epp[{$num}]" size="20" value="{$domain.eppvalue}" /> {$LANG.domaineppcodedesc}</td></tr>{/if}
 {if $domain.dnsmanagement || $domain.emailforwarding || $domain.idprotection}<tr><td class="fieldlabel">{$LANG.cartaddons}:</td><td>
