@@ -61,13 +61,13 @@
           </tr>
           {foreach key=num item=result from=$availabilityresults}
           <tr>
-            <td>{if $result.status eq "unavailable"}
+            <td>{if $result.status eq "available"}
               <input type="checkbox" name="domains[]" value="{$result.domain}" />
               <input type="hidden" name="domainsregperiod[{$result.domain}]" value="{$result.period}" />
               {else}X{/if}</td>
             <td>{$result.domain}</td>
-            <td class="{if $result.status eq "unavailable"}textgreen{else}textred{/if}">{if $result.status eq "unavailable"}{$LANG.domainavailable}{else}{$LANG.domainunavailable}{/if}</td>
-            <td>{if $result.status eq "unavailable"}
+            <td class="{if $result.status eq "available"}textgreen{else}textred{/if}">{if $result.status eq "available"}{$LANG.domainavailable}{else}{$LANG.domainunavailable}{/if}</td>
+            <td>{if $result.status eq "available"}
               <select name="domainsregperiod[{$result.domain}]" class="form-control input-sm">
                 {foreach key=period item=regoption from=$result.regoptions}
                 {if $regoption.transfer}<option value="{$period}">{$period} {$LANG.orderyears} @ {$regoption.transfer}</option>{/if}
