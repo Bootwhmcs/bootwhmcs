@@ -101,7 +101,9 @@ jQuery(document).ready(function(){
     }
   });
 
+  // Select2
   $("#country").select2();
+  $('#stateselect').select2();
 
   $('.extraTicketAttachment').click(function() {
     jQuery("#fileuploads").append('<input type="file" name="attachments[]" style="width:70%;" /><br />');
