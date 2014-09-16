@@ -8,7 +8,7 @@
       {$product.name}{if $product.qty!=""} <span class="qty">({$product.qty} {$LANG.orderavailable})</span>{/if}
       <span class="pull-right">
         {if $product.bid}
-        {$LANG.bundledeal}<br />
+        {$LANG.bundledeal}
         {if $product.displayprice}<span class="pricing">{$product.displayprice}</span>{/if}
         {else}
         {if $product.pricing.hasconfigoptions}{$LANG.startingfrom}{/if}
