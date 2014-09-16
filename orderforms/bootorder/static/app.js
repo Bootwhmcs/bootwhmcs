@@ -1,4 +1,7 @@
 jQuery(document).ready(function(){
+
+  jQuery("#configproducterror").hide();
+
   jQuery("#existingcustomer").click(function(){
     jQuery("#custtype").val("existing");
   });
