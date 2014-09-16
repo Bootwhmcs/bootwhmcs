@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="templates/orderforms/{$carttpl}/style.css" />
-
 <div id="order-modern">
 
 <h1>{$LANG.cartdomainsconfig}</h1>
