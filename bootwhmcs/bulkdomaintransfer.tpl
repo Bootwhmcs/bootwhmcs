@@ -1,9 +1,9 @@
 {if $bulkdomainsearchenabled}
   {include file="$template/pageheader.tpl" title=$LANG.domaintitle desc=$LANG.domaincheckerintro}
-  
+
   <p align="right">
-    <a href="domainchecker.php">{$LANG.domainsimplesearch}</a> | 
-    <a href="domainchecker.php?search=bulkregister">{$LANG.domainbulksearch}</a> | 
+    <a href="domainchecker.php">{$LANG.domainsimplesearch}</a> |
+    <a href="domainchecker.php?search=bulkregister">{$LANG.domainbulksearch}</a> |
     <strong>{$LANG.domainbulktransfersearch}</strong>
   </p>
 {/if}
@@ -14,22 +14,22 @@
 
 <div class="row">
   <div class="col-md-5">
-  
+
     {if $invalid}
-      <div class="alert aler-danger">{$LANG.ordererrordomaininvalid}</div>
+      <div class="alert alert-danger">{$LANG.ordererrordomaininvalid}</div>
     {/if}
-  
+
     <div class="well">
       <p><small>{$LANG.domainbulktransferdescription}</small></p>
-      
+
       <hr />
-      
+
       <form method="post" action="domainchecker.php?search=bulktransfer">
-      
+
         <div class="form-group">
           <textarea name="bulkdomains" class="form-control" rows="8">{$bulkdomains}</textarea>
         </div>
-        
+
         {if $capatacha}
           {if $capatacha eq "recaptcha"}
             <p>{$LANG.captchaverify}</p>
@@ -39,17 +39,17 @@
             <img src="includes/verifyimage.php" align="middle" /> <input type="text" name="code" size="10" maxlength="5" /> &nbsp;&nbsp;&nbsp;
           {/if}
         {/if}
-        
+
         <button type="submit" id="Submit" value="" class="btn btn-success btn-block"><i class="fa fa-globe"></i> {$LANG.domainlookupbutton}</button>
       </form>
     </div>
-    
+
   </div>
-  
+
   <div class="col-md-7">
 
     {if $availabilityresults}
-      
+
       {include file="$template/pageheader.tpl" title=$LANG.morechoices}
       <form method="post" action="{$systemsslurl}cart.php?a=add&domain=transfer">
         <table width="100%" border="0" cellpadding="10" cellspacing="0" class="table table-striped table-bordered">
@@ -77,14 +77,14 @@
           </tr>
           {/foreach}
         </table>
-        
+
         <button type="submit" class="btn btn-danger pull-right">{$LANG.ordernowbutton}</button>
       </form>
-    
+
     {else}
-    
+
       {include file="$template/pageheader.tpl" title=$LANG.domainspricing}
-    
+
       <table width="100%" border="0" cellpadding="10" cellspacing="0" class="table table-striped table-bordered">
         <tr>
           <th>{$LANG.domaintld}</th>
@@ -103,9 +103,9 @@
         </tr>
         {/foreach}
       </table>
-    
+
     {/if}
-    
+
   </div>
-  
+
 </div>
