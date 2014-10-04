@@ -2,7 +2,7 @@
 
 <form method="post" action="clientarea.php?action=products">
   <div class="input-group">
-    <input type="text" name="q" value="{if $q}{$q}{else}{$LANG.searchenterdomain}{/if}" class="form-control" placeholder="{$LANG.searchenterdomain}" />
+    <input type="text" name="q" value="{if $q}{$q}{/if}" class="form-control" placeholder="{$LANG.searchenterdomain}" />
     
     <div class="input-group-btn">
       <button type="submit" class="btn btn-info">{$LANG.searchfilter}</button>
