@@ -30,7 +30,9 @@
       <td>{$service.amount}</td>
       <td>{$service.billingcycle}</td>
       <td>{$service.nextduedate}</td>
-      <td><span class="label label-{if $service.rawstatus == 'pending'}primary{elseif $service.rawstatus == 'suspended'}danger{elseif $service.rawstatus == 'terminated'}danger{elseif $service.rawstats == 'active'}success{/if}">{$service.statustext}</span></td>
+      <td>
+        <span class="label {if $service.rawstatus == 'active'} label-success{elseif $service.rawstatus == 'suspended'} label-danger{elseif $service.rawstatus == 'terminated'} label-danger{elseif $service.rawstatus == 'cancelled'} label-info{elseif $service.rawstatus == 'pending'} label-primary{/if}">{$service.statustext}</span>
+      </td>
       <td>
           <div class="btn-group">
           <a class="btn btn-xs btn-danger" href="clientarea.php?action=productdetails&id={$service.id}"> <i class="icon icon-list-alt"></i> {$LANG.clientareaviewdetails}</a>
