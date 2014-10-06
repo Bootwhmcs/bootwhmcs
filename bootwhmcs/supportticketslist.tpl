@@ -2,7 +2,7 @@
 
 <form method="post" action="supporttickets.php">
   <div class="input-group">
-    <input type="text" name="searchterm" value="{if $q}{$q}{else}{$LANG.searchtickets}{/if}" class="form-control" placeholder="{$LANG.searchtickets}" />
+    <input type="text" name="searchterm" value="{if $q}{$q}{/if}" class="form-control" placeholder="{$LANG.searchtickets}" />
     
     <div class="input-group-btn">
       <button type="submit" class="btn btn-info">{$LANG.searchfilter}</button>

@@ -2,7 +2,7 @@
 
 <form method="post" action="clientarea.php?action=products">
   <div class="input-group">
-    <input type="text" name="q" value="{if $q}{$q}{else}{$LANG.searchenterdomain}{/if}" class="form-control" placeholder="{$LANG.searchenterdomain}" />
+    <input type="text" name="q" value="{if $q}{$q}{/if}" class="form-control" placeholder="{$LANG.searchenterdomain}" />
     
     <div class="input-group-btn">
       <button type="submit" class="btn btn-info">{$LANG.searchfilter}</button>
@@ -30,7 +30,7 @@
       <td>{$service.amount}</td>
       <td>{$service.billingcycle}</td>
       <td>{$service.nextduedate}</td>
-      <td><span class="label label-{if $service.rawstatus == 'pending'}primary{elseif $service.rawstatus == 'suspended'}danger{elseif $service.rawstatus == 'terminated'}danger{elseif $service.rawstats == 'active'}success{/if}">{$service.statustext}</span></td>
+      <td><span class="label label-{if $service.rawstatus == 'pending'}primary{elseif $service.rawstatus == 'suspended'}danger{elseif $service.rawstatus == 'terminated'}danger{elseif $service.rawstatus == 'active'}success{elseif $service.rawstatus == 'cancelled'}warning{elseif $service.rawstatus == 'fraud'}danger{/if}">{$service.statustext}</span></td>
       <td>
           <div class="btn-group">
           <a class="btn btn-xs btn-danger" href="clientarea.php?action=productdetails&id={$service.id}"> <i class="icon icon-list-alt"></i> {$LANG.clientareaviewdetails}</a>
