@@ -25,7 +25,7 @@
         <td>{$invoice.datecreated}</td>
         <td>{$invoice.datedue}</td>
         <td>{$invoice.total}</td>
-        <td><span class="label label-{if $invoice.rawstatus == 'unpaid'}warning{elseif $invoice.rawstatus == 'overdue'}danger{elseif $invoice.rawstatus == 'paid'}success{/if}">{$invoice.statustext}</span></td>
+        <td><span class="label label-{if $invoice.rawstatus == 'unpaid'}warning{elseif $invoice.rawstatus == 'cancelled'}info{elseif $invoice.rawstatus == 'overdue'}danger{elseif $invoice.rawstatus == 'paid'}success{else}default{/if}">{$invoice.statustext}</span></td>
         <td><a href="viewinvoice.php?id={$invoice.id}" target="_blank" class="btn btn-xs btn-danger">{$LANG.invoicesview}</a></td>
       </tr>
       {foreachelse}
