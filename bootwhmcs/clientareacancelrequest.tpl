@@ -47,14 +47,14 @@
         <div class="control-group">
             <label class="control-label" for="cancellationreason">{$LANG.clientareacancelreason}</label>
             <div class="controls">
-                <textarea name="cancellationreason" id="cancellationreason" rows="6" class="fullwidth"></textarea>
+                <textarea name="cancellationreason" id="cancellationreason" rows="6" class="form-control"></textarea>
             </div>
         </div>
 
         <div class="control-group">
             <label class="control-label" for="type">{$LANG.clientareacancellationtype}</label>
             <div class="controls">
-                <select name="type" id="type">
+                <select name="type" id="type" class="form-control">
                 <option value="Immediate">{$LANG.clientareacancellationimmediate}</option>
                 <option value="End of Billing Period">{$LANG.clientareacancellationendofbillingperiod}</option>
                 </select>
@@ -66,13 +66,13 @@
         <div class="alert alert-block alert-warn textcenter">
         <p><strong>{$LANG.cancelrequestdomain}</strong></p>
         <p>{$LANG.cancelrequestdomaindesc|sprintf2:$domainnextduedate:$domainprice:$domainregperiod}</p>
-        <p><label class="checkbox"><input type="checkbox" name="canceldomain" id="canceldomain" /> {$LANG.cancelrequestdomainconfirm}</label></p>
+        <p><label class="checkbox"><input type="checkbox" name="canceldomain" id="canceldomain" class="btn btn-primary" /> {$LANG.cancelrequestdomainconfirm}</label></p>
         </div>
         {/if}
 
         <div class="form-actions">
             <input type="submit" value="{$LANG.clientareacancelrequestbutton}" class="btn btn-danger" />
-            <input type="button" value="{$LANG.cancel}" class="btn" onclick="window.location='clientarea.php?action=productdetails&id={$id}'" />
+            <input type="button" value="{$LANG.cancel}" class="btn btn-danger" onclick="window.location='clientarea.php?action=productdetails&id={$id}'" />
         </div>
 
     </fieldset>
