@@ -43,6 +43,21 @@ body {
   width: 100%;
 }
 
+#pwstrengthpos, #pwstrengthneg {
+	box-sizing: content-box;
+}
+
+span.password-strength table {
+	text-align: right;
+	border-spacing: 10px 6px;
+	border-collapse: separate;
+}
+
+span.password-strength {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
 table.ticketrating {
   display: table;
   width: auto;
@@ -77,3 +92,4 @@ table.ticketrating td.star {
     cursor: pointer;
     cursor: hand;
 }
+
