@@ -7,40 +7,42 @@
 <br />
 
 <form method="post" action="clientarea.php?action=masspay">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th{if $orderby eq "id"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=id">{$LANG.invoicestitle}</a></th>
-        <th{if $orderby eq "date"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=date">{$LANG.invoicesdatecreated}</a></th>
-        <th{if $orderby eq "duedate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=duedate">{$LANG.invoicesdatedue}</a></th>
-        <th{if $orderby eq "total"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=total">{$LANG.invoicestotal}</a></th>
-        <th{if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=status">{$LANG.invoicesstatus}</a></th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      {foreach from=$invoices item=invoice}
-      <tr>
-        <td><a href="viewinvoice.php?id={$invoice.id}" target="_blank"><strong>{$invoice.invoicenum}</strong></a></td>
-        <td>{$invoice.datecreated}</td>
-        <td>{$invoice.datedue}</td>
-        <td>{$invoice.total}</td>
-        <td><span class="label label-{if $invoice.rawstatus == 'unpaid'}warning{elseif $invoice.rawstatus == 'cancelled'}info{elseif $invoice.rawstatus == 'overdue'}danger{elseif $invoice.rawstatus == 'paid'}success{else}default{/if}">{$invoice.statustext}</span></td>
-        <td><a href="viewinvoice.php?id={$invoice.id}" target="_blank" class="btn btn-xs btn-danger">{$LANG.invoicesview}</a></td>
-      </tr>
-      {foreachelse}
-      <tr>
-        <td colspan="6" class="textcenter">{$LANG.norecordsfound}</td>
-      </tr>
-      {/foreach}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3">{$numitems} {$LANG.recordsfound}, {$LANG.page} {$pagenumber} {$LANG.pageof} {$totalpages}</td>
-        <td colspan="3">{include file="$template/clientarearecordslimit.tpl" clientareaaction=$clientareaaction}</td>
-      </tr>
-    </tfoot>
-  </table>
+	<div class="table-responsive">
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th{if $orderby eq "id"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=id">{$LANG.invoicestitle}</a></th>
+	        <th{if $orderby eq "date"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=date">{$LANG.invoicesdatecreated}</a></th>
+	        <th{if $orderby eq "duedate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=duedate">{$LANG.invoicesdatedue}</a></th>
+	        <th{if $orderby eq "total"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=total">{$LANG.invoicestotal}</a></th>
+	        <th{if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=invoices&orderby=status">{$LANG.invoicesstatus}</a></th>
+	        <th>&nbsp;</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {foreach from=$invoices item=invoice}
+	      <tr>
+	        <td><a href="viewinvoice.php?id={$invoice.id}" target="_blank"><strong>{$invoice.invoicenum}</strong></a></td>
+	        <td>{$invoice.datecreated}</td>
+	        <td>{$invoice.datedue}</td>
+	        <td>{$invoice.total}</td>
+	        <td><span class="label label-{if $invoice.rawstatus == 'unpaid'}warning{elseif $invoice.rawstatus == 'cancelled'}info{elseif $invoice.rawstatus == 'overdue'}danger{elseif $invoice.rawstatus == 'paid'}success{else}default{/if}">{$invoice.statustext}</span></td>
+	        <td><a href="viewinvoice.php?id={$invoice.id}" target="_blank" class="btn btn-xs btn-danger">{$LANG.invoicesview}</a></td>
+	      </tr>
+	      {foreachelse}
+	      <tr>
+	        <td colspan="6" class="textcenter">{$LANG.norecordsfound}</td>
+	      </tr>
+	      {/foreach}
+	    </tbody>
+	    <tfoot>
+	      <tr>
+	        <td colspan="3">{$numitems} {$LANG.recordsfound}, {$LANG.page} {$pagenumber} {$LANG.pageof} {$totalpages}</td>
+	        <td colspan="3">{include file="$template/clientarearecordslimit.tpl" clientareaaction=$clientareaaction}</td>
+	      </tr>
+	    </tfoot>
+	  </table>
+	</div>
 </form>
 
 <ul class="pagination pull-right  ">

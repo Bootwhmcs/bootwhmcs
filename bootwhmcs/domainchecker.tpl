@@ -77,26 +77,27 @@
 
 <form method="post" action="{$systemsslurl}cart.php?a=add&domain=register">
 
-<table class="table table-striped table-framed">
-    <thead>
-        <tr>
-            <th></th>
-            <th>{$LANG.domainname}</th>
-            <th class="textcenter">{$LANG.domainstatus}</th>
-            <th class="textcenter">{$LANG.domainmoreinfo}</th>
-        </tr>
-    </thead>
-    <tbody>
-{foreach from=$availabilityresults key=num item=result}
-        <tr>
-            <td class="textcenter">{if $result.status eq "available"}<input type="checkbox" name="domains[]" value="{$result.domain}" {if $num eq "0" && $available}checked {/if}/><input type="hidden" name="domainsregperiod[{$result.domain}]" value="{$result.period}" />{else}X{/if}</td>
-            <td>{$result.domain}</td>
-            <td class="textcenter {if $result.status eq "available"}domcheckersuccess{else}domcheckererror{/if}">{if $result.status eq "available"}{$LANG.domainavailable}{else}{$LANG.domainunavailable}{/if}</td>
-            <td class="textcenter">{if $result.status eq "unavailable"}<a href="http://{$result.domain}" target="_blank">WWW</a> <a href="#" onclick="window.open('whois.php?domain={$result.domain}','whois','width=650,height=400,scrollbars=yes'); return false">WHOIS</a>{else}<select name="domainsregperiod[{$result.domain}]">{foreach key=period item=regoption from=$result.regoptions}<option value="{$period}">{$period} {$LANG.orderyears} @ {$regoption.register}</option>{/foreach}</select>{/if}</td>
-        </tr>
-{/foreach}
-</table>
-
+<div class="table-responsive">
+	<table class="table table-striped table-framed">
+	    <thead>
+	        <tr>
+	            <th></th>
+	            <th>{$LANG.domainname}</th>
+	            <th class="textcenter">{$LANG.domainstatus}</th>
+	            <th class="textcenter">{$LANG.domainmoreinfo}</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	{foreach from=$availabilityresults key=num item=result}
+	        <tr>
+	            <td class="textcenter">{if $result.status eq "available"}<input type="checkbox" name="domains[]" value="{$result.domain}" {if $num eq "0" && $available}checked {/if}/><input type="hidden" name="domainsregperiod[{$result.domain}]" value="{$result.period}" />{else}X{/if}</td>
+	            <td>{$result.domain}</td>
+	            <td class="textcenter {if $result.status eq "available"}domcheckersuccess{else}domcheckererror{/if}">{if $result.status eq "available"}{$LANG.domainavailable}{else}{$LANG.domainunavailable}{/if}</td>
+	            <td class="textcenter">{if $result.status eq "unavailable"}<a href="http://{$result.domain}" target="_blank">WWW</a> <a href="#" onclick="window.open('whois.php?domain={$result.domain}','whois','width=650,height=400,scrollbars=yes'); return false">WHOIS</a>{else}<select name="domainsregperiod[{$result.domain}]">{foreach key=period item=regoption from=$result.regoptions}<option value="{$period}">{$period} {$LANG.orderyears} @ {$regoption.register}</option>{/foreach}</select>{/if}</td>
+	        </tr>
+	{/foreach}
+	</table>
+</div>
 <p align="center"><input type="submit" value="{$LANG.ordernowbutton} &raquo;" class="btn btn-danger" /></p>
 
 </form>
@@ -109,29 +110,30 @@
 
 {include file="$template/pageheader.tpl" title=$LANG.domainspricing}
 
-<table class="table table-striped table-framed">
-    <thead>
-        <tr>
-            <th class="textcenter">{$LANG.domaintld}</th>
-            <th class="textcenter">{$LANG.domainminyears}</th>
-            <th class="textcenter">{$LANG.domainsregister}</th>
-            <th class="textcenter">{$LANG.domainstransfer}</th>
-            <th class="textcenter">{$LANG.domainsrenew}</th>
-        </tr>
-    </thead>
-    <tbody>
-{foreach from=$tldpricelist item=tldpricelist}
-        <tr>
-            <td>{$tldpricelist.tld}</td>
-            <td class="textcenter">{$tldpricelist.period}</td>
-            <td class="textcenter">{if $tldpricelist.register}{$tldpricelist.register}{else}{$LANG.domainregnotavailable}{/if}</td>
-            <td class="textcenter">{if $tldpricelist.transfer}{$tldpricelist.transfer}{else}{$LANG.domainregnotavailable}{/if}</td>
-            <td class="textcenter">{if $tldpricelist.renew}{$tldpricelist.renew}{else}{$LANG.domainregnotavailable}{/if}</td>
-        </tr>
-{/foreach}
-    </tbody>
-</table>
-
+<div class="table-responsive">
+	<table class="table table-striped table-framed">
+	    <thead>
+	        <tr>
+	            <th class="textcenter">{$LANG.domaintld}</th>
+	            <th class="textcenter">{$LANG.domainminyears}</th>
+	            <th class="textcenter">{$LANG.domainsregister}</th>
+	            <th class="textcenter">{$LANG.domainstransfer}</th>
+	            <th class="textcenter">{$LANG.domainsrenew}</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	{foreach from=$tldpricelist item=tldpricelist}
+	        <tr>
+	            <td>{$tldpricelist.tld}</td>
+	            <td class="textcenter">{$tldpricelist.period}</td>
+	            <td class="textcenter">{if $tldpricelist.register}{$tldpricelist.register}{else}{$LANG.domainregnotavailable}{/if}</td>
+	            <td class="textcenter">{if $tldpricelist.transfer}{$tldpricelist.transfer}{else}{$LANG.domainregnotavailable}{/if}</td>
+	            <td class="textcenter">{if $tldpricelist.renew}{$tldpricelist.renew}{else}{$LANG.domainregnotavailable}{/if}</td>
+	        </tr>
+	{/foreach}
+	    </tbody>
+	</table>
+</div>
 {if !$loggedin && $currencies}
 <form method="post" action="domainchecker.php">
 <p align="right">{$LANG.choosecurrency}: <select name="currency" onchange="submit()">{foreach from=$currencies item=curr}

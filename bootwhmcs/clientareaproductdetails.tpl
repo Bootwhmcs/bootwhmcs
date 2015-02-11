@@ -191,39 +191,41 @@
 
     {if $addonsavailable}<p><a href="cart.php?gid=addons&pid={$id}">{$LANG.orderavailableaddons}</a></p>{/if}
 
-    <table class="table table-striped">
-
-      <thead>
-        <tr>
-          <th>{$LANG.clientareaaddon}</th>
-          <th>{$LANG.clientareaaddonpricing}</th>
-          <th>{$LANG.clientareahostingnextduedate}</th>
-          <th>{$LANG.clientareastatus}</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        {foreach key=num item=addon from=$addons}
-
-        <tr>
-          <td>{$addon.name}</td>
-          <td>{$addon.pricing}</td>
-          <td>{$addon.nextduedate}</td>
-          <td><span class="label label-primary {$addon.rawstatus}">{$addon.status}</span></td>
-        </tr>
-
-        {foreachelse}
-
-        <tr>
-          <td colspan="4">{$LANG.clientareanoaddons}</td>
-        </tr>
-
-        {/foreach}
-
-      </tbody>
-
-    </table>
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	
+	      <thead>
+	        <tr>
+	          <th>{$LANG.clientareaaddon}</th>
+	          <th>{$LANG.clientareaaddonpricing}</th>
+	          <th>{$LANG.clientareahostingnextduedate}</th>
+	          <th>{$LANG.clientareastatus}</th>
+	        </tr>
+	      </thead>
+	
+	      <tbody>
+	
+	        {foreach key=num item=addon from=$addons}
+	
+	        <tr>
+	          <td>{$addon.name}</td>
+	          <td>{$addon.pricing}</td>
+	          <td>{$addon.nextduedate}</td>
+	          <td><span class="label label-primary {$addon.rawstatus}">{$addon.status}</span></td>
+	        </tr>
+	
+	        {foreachelse}
+	
+	        <tr>
+	          <td colspan="4">{$LANG.clientareanoaddons}</td>
+	        </tr>
+	
+	        {/foreach}
+	
+	      </tbody>
+	
+	    </table>
+	</div>
   </div>
 
 </div>

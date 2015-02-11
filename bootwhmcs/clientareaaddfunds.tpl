@@ -23,23 +23,24 @@
 
 <br />
 
-<table class="table table-striped table-framed">
-    <tbody>
-        <tr>
-            <td class="textright"><strong>{$LANG.addfundsminimum}</strong></td>
-            <td>{$minimumamount}</td>
-        </tr>
-        <tr>
-            <td class="textright"><strong>{$LANG.addfundsmaximum}</strong></td>
-            <td>{$maximumamount}</td>
-        </tr>
-        <tr>
-            <td class="textright"><strong>{$LANG.addfundsmaximumbalance}</strong></td>
-            <td>{$maximumbalance}</td>
-        </tr>
-    </tbody>
-</table>
-
+<div class="table-responsive">
+	<table class="table table-striped table-framed">
+	    <tbody>
+	        <tr>
+	            <td class="textright"><strong>{$LANG.addfundsminimum}</strong></td>
+	            <td>{$minimumamount}</td>
+	        </tr>
+	        <tr>
+	            <td class="textright"><strong>{$LANG.addfundsmaximum}</strong></td>
+	            <td>{$maximumamount}</td>
+	        </tr>
+	        <tr>
+	            <td class="textright"><strong>{$LANG.addfundsmaximumbalance}</strong></td>
+	            <td>{$maximumbalance}</td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
 <form class="form-horizontal" method="post" action="{$smarty.server.PHP_SELF}?action=addfunds">
 
 <div class="logincontainer">

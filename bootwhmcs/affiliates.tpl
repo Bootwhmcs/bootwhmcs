@@ -62,7 +62,7 @@
   
   </div>
 
-
+<div class="table-responsive">
   <table class="table table-striped">
     <tr>
       <td>{$LANG.affiliatescommissionspending}:</td>
@@ -77,10 +77,11 @@
       <td><strong>{$withdrawn}</strong></td>
     </tr>
   </table>
-  
+</div> 
   
   {include file="$template/pageheader.tpl" title=$LANG.affiliatesreferals}
   
+<div class="table-responsive">
   <table class="table table-striped">
   
     <thead>
@@ -116,7 +117,7 @@
     </tfoot>
     
   </table>
-  
+ </div> 
   
   <ul class="pagination pull-right">
     <li class="prev{if !$prevpage} disabled{/if}"><a href="{if $prevpage}affiliates.php?page={$prevpage}{else}javascript:return false;{/if}">&larr; {$LANG.previouspage}</a></li>
