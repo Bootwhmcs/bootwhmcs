@@ -228,3 +228,4 @@ function completedomain() {
 }
 </script>
 {/literal}
+{include file="orderforms/$carttpl/footer.tpl" title=$productinfo.name}
