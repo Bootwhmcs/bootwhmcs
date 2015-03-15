@@ -30,31 +30,20 @@
   
 {/if}
 
-<form class="form-horizontal" method="post" action="{$smarty.server.PHP_SELF}?action=pwreset">
-<input type="hidden" name="key" id="key" value="{$key}" />
-
-<h4 align="center">{$LANG.pwresetenternewpw}</h4>
-<table width="100%" cellspacing="0" cellpadding="0" class="frame">
-    <tr>
-        <td>
-            <table width="100%" border="0" cellpadding="10" cellspacing="0">
-                <tr>
-                    <td width="150" class="fieldarea">{$LANG.newpassword}</td>
-                    <td width="175"><input type="password" name="newpw" id="newpw" /></td>
-                    <td><script language="javascript">showStrengthBar();</script></td>
-                </tr>
-                <tr>
-                    <td width="150" class="fieldarea">{$LANG.confirmnewpassword}</td>
-                    <td width="175"><input type="password" name="confirmpw" id="confirmpw" /></td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-<p align="center"><input type="submit" value="{$LANG.clientareasavechanges}" class="buttongo" /> <input type="reset" value="{$LANG.cancel}" class="button" /></p>
-
+<form class="form-stacked" method="post" action="{$smarty.server.PHP_SELF}?action=pwreset">
+	<input type="hidden" name="key" id="key" value="{$key}" />
+	<h4 align="center">{$LANG.pwresetenternewpw}</h4>
+	<div class="form-group">
+		<label for="newpw">{$LANG.newpassword}</label>
+		<input class="form-control" type="password" name="newpw" id="newpw" />
+		
+	</div>
+	<div class="form-group">
+		<label for="confirmpw">{$LANG.confirmnewpassword}</label>
+		<input class="form-control" type="password" name="confirmpw" id="confirmpw" />
+	</div>
+	<input type="submit" value="{$LANG.clientareasavechanges}" class="btn btn-primary" /> <input type="reset" value="{$LANG.cancel}" class="btn btn-danger" />
+	<span class="password-strength"><script language="javascript">showStrengthBar();</script></span>
 </form>
 
 {/if}

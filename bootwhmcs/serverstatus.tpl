@@ -92,37 +92,38 @@ function checkPort(num,port) {
 
 <div class="center80">
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{$LANG.servername}</th>
-            <th class="textcenter">HTTP</th>
-            <th class="textcenter">FTP</th>
-            <th class="textcenter">POP3</th>
-            <th class="textcenter">{$LANG.serverstatusphpinfo}</th>
-            <th class="textcenter">{$LANG.serverstatusserverload}</th>
-            <th class="textcenter">{$LANG.serverstatusuptime}</th>
-        </tr>
-    </thead>
-    <tbody>
-{foreach from=$servers key=num item=server}
-        <tr>
-            <td>{$server.name}</td>
-            <td class="textcenter" id="port80_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
-            <td class="textcenter" id="port21_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
-            <td class="textcenter" id="port110_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
-            <td class="textcenter"><a href="{$server.phpinfourl}" target="_blank">{$LANG.serverstatusphpinfo}</a></td>
-            <td class="textcenter" id="load{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
-            <td class="textcenter" id="uptime{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /><script> checkPort({$num},80); checkPort({$num},21); checkPort({$num},110); getStats({$num}); </script></td>
-        </tr>
-{foreachelse}
-        <tr>
-            <td colspan="7">{$LANG.serverstatusnoservers}</td>
-        </tr>
-{/foreach}
-    </tbody>
-</table>
-
+<div class="table-responsive">
+	<table class="table table-striped">
+	    <thead>
+	        <tr>
+	            <th>{$LANG.servername}</th>
+	            <th class="textcenter">HTTP</th>
+	            <th class="textcenter">FTP</th>
+	            <th class="textcenter">POP3</th>
+	            <th class="textcenter">{$LANG.serverstatusphpinfo}</th>
+	            <th class="textcenter">{$LANG.serverstatusserverload}</th>
+	            <th class="textcenter">{$LANG.serverstatusuptime}</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	{foreach from=$servers key=num item=server}
+	        <tr>
+	            <td>{$server.name}</td>
+	            <td class="textcenter" id="port80_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
+	            <td class="textcenter" id="port21_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
+	            <td class="textcenter" id="port110_{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
+	            <td class="textcenter"><a href="{$server.phpinfourl}" target="_blank">{$LANG.serverstatusphpinfo}</a></td>
+	            <td class="textcenter" id="load{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /></td>
+	            <td class="textcenter" id="uptime{$num}"><img src="images/loadingsml.gif" alt="{$LANG.loading}" /><script> checkPort({$num},80); checkPort({$num},21); checkPort({$num},110); getStats({$num}); </script></td>
+	        </tr>
+	{foreachelse}
+	        <tr>
+	            <td colspan="7">{$LANG.serverstatusnoservers}</td>
+	        </tr>
+	{/foreach}
+	    </tbody>
+	</table>
+</div>
 </div>
 
 {/if}

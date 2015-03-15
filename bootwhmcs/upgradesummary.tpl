@@ -10,56 +10,57 @@
 </div>
 {/if}
 
-<table class="table table-striped table-framed">
-    <thead>
-        <tr>
-            <th width="60%">{$LANG.orderdesc}</th>
-            <th width="40%" class="textcenter">{$LANG.orderprice}</th>
-        </tr>
-    </thead>
-    <tbody>
-{foreach key=num item=upgrade from=$upgrades}
-    {if $type eq "package"}
-        <tr>
-            <td><input type="hidden" name="pid" value="{$upgrade.newproductid}" /><input type="hidden" name="billingcycle" value="{$upgrade.newproductbillingcycle}" />{$upgrade.oldproductname} => {$upgrade.newproductname}</td>
-            <td class="textcenter">{$upgrade.price}</td>
-        </tr>
-    {elseif $type eq "configoptions"}
-        <tr>
-            <td>{$upgrade.configname}: {$upgrade.originalvalue} => {$upgrade.newvalue}</td>
-            <td class="textcenter">{$upgrade.price}</td>
-        </tr>
-    {/if}
-{/foreach}
-        <tr class="subtotal">
-            <td class="textright">{$LANG.ordersubtotal}:</td>
-            <td class="textcenter">{$subtotal}</td>
-        </tr>
-        {if $promodesc}
-        <tr class="recurring">
-            <td class="textright">{$promodesc}:</td>
-            <td class="textcenter">{$discount}</td>
-        </tr>
-        {/if}
-        {if $taxrate}
-        <tr class="tax">
-            <td class="textright">{$taxname} @ {$taxrate}%:</td>
-            <td class="textcenter">{$tax}</td>
-        </tr>
-        {/if}
-        {if $taxrate2}
-        <tr class="tax">
-            <td class="textright">{$taxname2} @ {$taxrate2}%:</td>
-            <td class="textcenter">{$tax2}</td>
-        </tr>
-        {/if}
-        <tr class="total">
-            <td class="textright">{$LANG.ordertotalduetoday}:</td>
-            <td class="textcenter">{$total}</td>
-        </tr>
-    </tbody>
-</table>
-
+<div class="table-responsive">
+	<table class="table table-striped table-framed">
+	    <thead>
+	        <tr>
+	            <th width="60%">{$LANG.orderdesc}</th>
+	            <th width="40%" class="textcenter">{$LANG.orderprice}</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	{foreach key=num item=upgrade from=$upgrades}
+	    {if $type eq "package"}
+	        <tr>
+	            <td><input type="hidden" name="pid" value="{$upgrade.newproductid}" /><input type="hidden" name="billingcycle" value="{$upgrade.newproductbillingcycle}" />{$upgrade.oldproductname} => {$upgrade.newproductname}</td>
+	            <td class="textcenter">{$upgrade.price}</td>
+	        </tr>
+	    {elseif $type eq "configoptions"}
+	        <tr>
+	            <td>{$upgrade.configname}: {$upgrade.originalvalue} => {$upgrade.newvalue}</td>
+	            <td class="textcenter">{$upgrade.price}</td>
+	        </tr>
+	    {/if}
+	{/foreach}
+	        <tr class="subtotal">
+	            <td class="textright">{$LANG.ordersubtotal}:</td>
+	            <td class="textcenter">{$subtotal}</td>
+	        </tr>
+	        {if $promodesc}
+	        <tr class="recurring">
+	            <td class="textright">{$promodesc}:</td>
+	            <td class="textcenter">{$discount}</td>
+	        </tr>
+	        {/if}
+	        {if $taxrate}
+	        <tr class="tax">
+	            <td class="textright">{$taxname} @ {$taxrate}%:</td>
+	            <td class="textcenter">{$tax}</td>
+	        </tr>
+	        {/if}
+	        {if $taxrate2}
+	        <tr class="tax">
+	            <td class="textright">{$taxname2} @ {$taxrate2}%:</td>
+	            <td class="textcenter">{$tax2}</td>
+	        </tr>
+	        {/if}
+	        <tr class="total">
+	            <td class="textright">{$LANG.ordertotalduetoday}:</td>
+	            <td class="textcenter">{$total}</td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
 {if $promorecurring}
 <div class="alert alert-info textcenter">
     <p>{$LANG.recurringpromodesc|sprintf2:$promorecurring}</p>

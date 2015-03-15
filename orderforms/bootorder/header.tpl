@@ -1,4 +1,5 @@
 <script type="text/javascript" src="templates/orderforms/{$carttpl}/static/app.js"></script>
+<script type="text/javascript" src="includes/jscript/jqueryui.js"></script>
 
 <div class="page-header">
   <h1>{$title}</h1>

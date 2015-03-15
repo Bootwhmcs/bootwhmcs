@@ -42,56 +42,58 @@ $(document).ready(function() {
 <br /><br />
 <input id="bulkaction" name="update" type="hidden" />
 
-<table class="table table-striped table-framed">
-    <thead>
-        <tr>
-            <th><input type="checkbox" onclick="toggleCheckboxes('domids')" /></th>
-            <th{if $orderby eq "domain"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=domain">{$LANG.clientareahostingdomain}</a></th>
-            <th{if $orderby eq "regdate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=regdate">{$LANG.clientareahostingregdate}</a></th>
-            <th{if $orderby eq "nextduedate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=nextduedate">{$LANG.clientareahostingnextduedate}</a></th>
-            <th{if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=status">{$LANG.clientareastatus}</a></th>
-            <th{if $orderby eq "autorenew"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=autorenew">{$LANG.domainsautorenew}</a></th>
-            <th>&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-{foreach key=num item=domain from=$domains}
-        <tr>
-          <td><input type="checkbox" name="domids[]" class="domids" value="{$domain.id}" /></td>
-          <td><a href="http://{$domain.domain}/" target="_blank">{$domain.domain}</a></td>
-          <td>{$domain.registrationdate}</td>
-          <td>{$domain.nextduedate}</td>
-          <td><span class="label label-{if $domain.rawstatus == 'pending'}warning{elseif $domain.rawstatus == 'suspended'}danger{elseif $domain.rawstatus == 'active'}success{/if}">{$domain.statustext}</span></td>
-          <td>{if $domain.autorenew}{$LANG.domainsautorenewenabled}{else}{$LANG.domainsautorenewdisabled}{/if}</td>
-          <td>
-            <div class="btn-group">
-              <a class="btn btn-xs btn-danger" href="clientarea.php?action=domaindetails&id={$domain.id}"> <i class="icon-wrench"></i> {$LANG.managedomain}</a>
-              {if $domain.rawstatus == "active"}
-              <a class="btn btn-xs btn-danger dropdown-toggle" href="#" data-toggle="dropdown"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}#tab3"><i class="icon-globe"></i> {$LANG.domainmanagens}</a></li>
-                <li><a href="clientarea.php?action=domaincontacts&domainid={$domain.id}"><i class="icon-user"></i> {$LANG.domaincontactinfoedit}</a></li>
-                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}#tab2"><i class="icon-globe"></i> {$LANG.domainautorenewstatus}</a></li>
-                <li class="divider"></li>
-                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}"><i class="icon-pencil"></i> {$LANG.managedomain}</a></li>
-              </ul>
-              {/if}
-            </div>
-          </td>
-        </tr>
-{foreachelse}
-        <tr>
-            <td colspan="7">{$LANG.norecordsfound}</td>
-        </tr>
-{/foreach}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="4">{$numitems} {$LANG.recordsfound}, {$LANG.page} {$pagenumber} {$LANG.pageof} {$totalpages}</td>
-        <td colspan="3">{include file="$template/clientarearecordslimit.tpl" clientareaaction=$clientareaaction}</td>
-      </tr>
-    </tfoot>
-</table>
+<div class="table-responsive">
+	<table class="table table-striped table-framed">
+	    <thead>
+	        <tr>
+	            <th><input type="checkbox" onclick="toggleCheckboxes('domids')" /></th>
+	            <th{if $orderby eq "domain"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=domain">{$LANG.clientareahostingdomain}</a></th>
+	            <th{if $orderby eq "regdate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=regdate">{$LANG.clientareahostingregdate}</a></th>
+	            <th{if $orderby eq "nextduedate"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=nextduedate">{$LANG.clientareahostingnextduedate}</a></th>
+	            <th{if $orderby eq "status"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=status">{$LANG.clientareastatus}</a></th>
+	            <th{if $orderby eq "autorenew"} class="headerSort{$sort}"{/if}><a href="clientarea.php?action=domains{if $q}&q={$q}{/if}&orderby=autorenew">{$LANG.domainsautorenew}</a></th>
+	            <th>&nbsp;</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	{foreach key=num item=domain from=$domains}
+	        <tr>
+	          <td><input type="checkbox" name="domids[]" class="domids" value="{$domain.id}" /></td>
+	          <td><a href="http://{$domain.domain}/" target="_blank">{$domain.domain}</a></td>
+	          <td>{$domain.registrationdate}</td>
+	          <td>{$domain.nextduedate}</td>
+	          <td><span class="label label-{if $domain.rawstatus == 'pending'}warning{elseif $domain.rawstatus == 'suspended'}danger{elseif $domain.rawstatus == 'active'}success{/if}">{$domain.statustext}</span></td>
+	          <td>{if $domain.autorenew}{$LANG.domainsautorenewenabled}{else}{$LANG.domainsautorenewdisabled}{/if}</td>
+	          <td>
+	            <div class="btn-group">
+	              <a class="btn btn-xs btn-danger" href="clientarea.php?action=domaindetails&id={$domain.id}"> <i class="icon-wrench"></i> {$LANG.managedomain}</a>
+	              {if $domain.rawstatus == "active"}
+	              <a class="btn btn-xs btn-danger dropdown-toggle" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+	              <ul class="dropdown-menu">
+	                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}#tab3"><i class="icon-globe"></i> {$LANG.domainmanagens}</a></li>
+	                <li><a href="clientarea.php?action=domaincontacts&domainid={$domain.id}"><i class="icon-user"></i> {$LANG.domaincontactinfoedit}</a></li>
+	                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}#tab2"><i class="icon-globe"></i> {$LANG.domainautorenewstatus}</a></li>
+	                <li class="divider"></li>
+	                <li><a href="clientarea.php?action=domaindetails&id={$domain.id}"><i class="icon-pencil"></i> {$LANG.managedomain}</a></li>
+	              </ul>
+	              {/if}
+	            </div>
+	          </td>
+	        </tr>
+	{foreachelse}
+	        <tr>
+	            <td colspan="7">{$LANG.norecordsfound}</td>
+	        </tr>
+	{/foreach}
+	    </tbody>
+	    <tfoot>
+	      <tr>
+	        <td colspan="4">{$numitems} {$LANG.recordsfound}, {$LANG.page} {$pagenumber} {$LANG.pageof} {$totalpages}</td>
+	        <td colspan="3">{include file="$template/clientarearecordslimit.tpl" clientareaaction=$clientareaaction}</td>
+	      </tr>
+	    </tfoot>
+	</table>
+</div>
 </form>
 
 

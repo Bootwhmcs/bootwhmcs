@@ -1,4 +1,3 @@
-<script type="text/javascript" src="includes/jscript/jqueryui.js"></script>
 <script type="text/javascript" src="templates/orderforms/{$carttpl}/static/app.js"></script>
 
 <form id="orderfrm">
@@ -85,54 +84,58 @@
 {if $configurableoptions}
 <h3>{$LANG.orderconfigpackage}</h3>
 <div class="configoptions">
-<table width="100%" cellspacing="0" cellpadding="0" class="configtable">
 {foreach from=$configurableoptions item=configoption}
-<tr><td class="fieldlabel">{$configoption.optionname}</td><td class="fieldarea">
-{if $configoption.optiontype eq 1}
-<select name="configoption[{$configoption.id}]" onchange="recalctotals()">
-{foreach key=num2 item=options from=$configoption.options}
-<option value="{$options.id}"{if $configoption.selectedvalue eq $options.id} selected="selected"{/if}>{$options.name}</option>
-{/foreach}
-</select>
-{elseif $configoption.optiontype eq 2}
-{foreach key=num2 item=options from=$configoption.options}
-<label><input type="radio" name="configoption[{$configoption.id}]" value="{$options.id}"{if $configoption.selectedvalue eq $options.id} checked="checked"{/if} onclick="recalctotals()" /> {$options.name}</label><br />
-{/foreach}
-{elseif $configoption.optiontype eq 3}
-<label><input type="checkbox" name="configoption[{$configoption.id}]" value="1"{if $configoption.selectedqty} checked{/if} onclick="recalctotals()" /> {$configoption.options.0.name}</label>
-{elseif $configoption.optiontype eq 4}
-{if $configoption.qtymaximum}
-{literal}
-    <script>
-    jQuery(function() {
-        {/literal}
-        var configid = '{$configoption.id}';
-        var configmin = {$configoption.qtyminimum};
-        var configmax = {$configoption.qtymaximum};
-        var configval = {if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if};
-        {literal}
-        jQuery("#slider"+configid).slider({
-            min: configmin,
-            max: configmax,
-            value: configval,
-            range: "min",
-            slide: function( event, ui ) {
-                jQuery("#confop"+configid).val( ui.value );
-                jQuery("#confoplabel"+configid).html( ui.value );
-            },
-            stop: function( event, ui ) {
-                recalctotals();
-            }
-        });
-    });
-    </script>
-{/literal}
-<table width="90%"><tr><td width="30" id="confoplabel{$configoption.id}" class="configoplabel">{if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if}</td><td><div id="slider{$configoption.id}"></div></td></tr></table>
-<input type="hidden" name="configoption[{$configoption.id}]" id="confop{$configoption.id}" value="{if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if}" />
-{else}
-<input type="text" name="configoption[{$configoption.id}]" value="{$configoption.selectedqty}" size="5" onkeyup="recalctotals()" /> x {$configoption.options.0.name}
-{/if}
-{/if}
+	<div class="form-group">
+		<label class="control-label" for="configoption[{$configoption.id}]">{$configoption.optionname}</label>
+		<div class="control">
+			{if $configoption.optiontype eq 1}
+				<select class="form-control" name="configoption[{$configoption.id}]" onchange="recalctotals()">
+					{foreach key=num2 item=options from=$configoption.options}
+						<option value="{$options.id}"{if $configoption.selectedvalue eq $options.id} selected="selected"{/if}>{$options.name}</option>
+					{/foreach}
+				</select>
+			{elseif $configoption.optiontype eq 2}
+				{foreach key=num2 item=options from=$configoption.options}
+					<label><input class="form-control" type="radio" name="configoption[{$configoption.id}]" value="{$options.id}"{if $configoption.selectedvalue eq $options.id} checked="checked"{/if} onclick="recalctotals()" /> {$options.name}</label><br />
+				{/foreach}
+			{elseif $configoption.optiontype eq 3}
+				<label><input class="form-control" type="checkbox" name="configoption[{$configoption.id}]" value="1"{if $configoption.selectedqty} checked{/if} onclick="recalctotals()" /> {$configoption.options.0.name}</label>
+			{elseif $configoption.optiontype eq 4}
+				{if $configoption.qtymaximum}
+					{literal}
+					    <script>
+					    jQuery(function() {
+					        {/literal}
+					        var configid = '{$configoption.id}';
+					        var configmin = {$configoption.qtyminimum};
+					        var configmax = {$configoption.qtymaximum};
+					        var configval = {if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if};
+					        {literal}
+					        jQuery("#slider"+configid).slider({
+					            min: configmin,
+					            max: configmax,
+					            value: configval,
+					            range: "min",
+					            slide: function( event, ui ) {
+					                jQuery("#confop"+configid).val( ui.value );
+					                jQuery("#confoplabel"+configid).html( ui.value );
+					            },
+					            stop: function( event, ui ) {
+					                recalctotals();
+					            }
+					        });
+					    });
+					    </script>
+					{/literal}
+					<table width="90%"><tr><td width="30" id="confoplabel{$configoption.id}" class="configoplabel">{if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if}</td><td><div id="slider{$configoption.id}"></div></td></tr></table>
+					<input type="hidden" name="configoption[{$configoption.id}]" id="confop{$configoption.id}" value="{if $configoption.selectedqty}{$configoption.selectedqty}{else}{$configoption.qtyminimum}{/if}" />
+				{else}
+					<input class="form-control small" type="text" name="configoption[{$configoption.id}]" value="{$configoption.selectedqty}" size="5" onkeyup="recalctotals()" /> x {$configoption.options.0.name}
+				{/if}
+			{/if}
+		</div>
+	</div>
+<tr><td class="fieldlabel"></td><td class="fieldarea">
 </td></tr>
 {/foreach}
 </table>
