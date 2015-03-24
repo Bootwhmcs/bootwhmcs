@@ -1,15 +1,19 @@
 {include file="$template/pageheader.tpl" title=$LANG.clientareanavsupporttickets desc=$LANG.supportticketsintro}
-<a class="btn btn-danger pull-right" href="submitticket.php"><i class="icon-comment"></i> {$LANG.opennewticket}</a>
-
-<form method="post" action="supporttickets.php">
-  <div class="input-group">
-    <input type="text" name="searchterm" value="{if $q}{$q}{/if}" class="form-control" placeholder="{$LANG.searchtickets}" />
-    
-    <div class="input-group-btn">
-      <button type="submit" class="btn btn-info">{$LANG.searchfilter}</button>
-    </div>
-  </div>
-</form>
+<div class="row">
+	<div class="col-sm-10">
+	<form method="post" action="supporttickets.php">
+	  <div class="input-group">
+		<input type="text" name="searchterm" value="{if $q}{$q}{/if}" class="form-control" placeholder="{$LANG.searchtickets}" />
+		<div class="input-group-btn">
+		  <button type="submit" class="btn btn-info">{$LANG.searchfilter}</button>
+		</div>
+	  </div>
+	</form>
+	</div>
+	<div class="col-sm-2">
+		<a class="btn btn-danger" href="submitticket.php"><i class="icon icon-comment"></i> {$LANG.opennewticket}</a>
+	</div>
+</div>
 
 <br />
 
