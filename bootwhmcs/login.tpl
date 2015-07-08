@@ -6,6 +6,7 @@
 </div>
 {/if}
 
+<div class="container"> 
 <form method="post" action="{$systemsslurl}dologin.php" class="form-stacked">
   
   <div class="form-group">
@@ -30,3 +31,5 @@
   
   <button type="submit" class="btn btn-primary btn-lg">{$LANG.loginbutton}</button>
 </form>
+
+</div>
