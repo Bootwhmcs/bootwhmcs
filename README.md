@@ -14,4 +14,4 @@ Voila!
 
 
 ### Who?
-BootWHMCS can be found at http://bootwhmcs.com/ and is regularly maintained by [Logik Web Solutions](http://logik.no/en/).
+BootWHMCS can be found at http://bootwhmcs.com/ and is regularly maintained by [QuadHost](http://quadhost.net).
