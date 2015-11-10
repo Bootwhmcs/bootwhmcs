@@ -1,5 +1,7 @@
 <div class="row">
-
+  <div class="page-header">
+      <h1>{$LANG.domainrenewals}</h1>
+  </div> 
   <div class="col-md-3">
   
     <div class="list-group">
@@ -7,10 +9,7 @@
       {foreach key=num item=productgroup from=$productgroups}
       {if $productgroup.gid neq $gid}<a href="cart.php?gid={$productgroup.gid}" class="list-group-item">{$productgroup.name}</a>{/if}
       {/foreach}
-
-      <hr />
-      
-      {if $loggedin}
+	  {if $loggedin}
       {if $gid neq "addons"}<a href="cart.php?gid=addons" class="list-group-item">{$LANG.cartproductaddons}</a></li>{/if}
       {if $renewalsenabled && $gid neq "renewals"}<a href="cart.php?gid=renewals" class="list-group-item">{$LANG.domainrenewals}</a>{/if}
       {/if}
@@ -25,12 +24,7 @@
   
   <div class="col-md-9">
   
-    <div class="page-header">
-      <h1>{$LANG.domainrenewals}</h1>
-    </div>
-    
     <p>{$LANG.domainrenewdesc}</p>
-    
     <form method="post" action="cart.php?a=add&renewals=true">
 
       <table class="table table-striped">
@@ -82,9 +76,11 @@
         </tr>
         {/foreach}
       </tbody>
+	  
     </table>
 
     <input type="submit" value="{$LANG.ordernowbutton} &raquo;" class="btn btn-danger" />
   </form>
   
-</div>
+ </div>
+ </div>
