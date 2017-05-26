@@ -55,7 +55,7 @@ function emptyCart(type,num) {
     <thead>
       <tr>
         <th width="60%">{$LANG.orderdesc}</th>
-        <th width="40%">{$LANG.orderprice}</th>
+        <th class="text-right" width="40%">{$LANG.orderprice}</th>
       </tr>
     </thead>
     <tbody>
@@ -75,12 +75,12 @@ function emptyCart(type,num) {
           {/if}
         </td>
 
-        <td class="textcenter"><strong>{$product.pricingtext}{if $product.proratadate}<br />({$LANG.orderprorata} {$product.proratadate}){/if}</strong></td>
+        <td class="text-right"><strong>{$product.pricingtext}{if $product.proratadate}<br />({$LANG.orderprorata} {$product.proratadate}){/if}</strong></td>
       </tr>
 
       {foreach key=addonnum item=addon from=$product.addons}
       <tr class="carttableproduct">
-        <td><strong>{$LANG.orderaddon}</strong> - {$addon.name}</td><td class="textcenter"><strong>{$addon.pricingtext}</strong></td>
+        <td><strong>{$LANG.orderaddon}</strong> - {$addon.name}</td><td class="text-right"><strong>{$addon.pricingtext}</strong></td>
       </tr>
       {/foreach}
     {/foreach}
@@ -90,7 +90,7 @@ function emptyCart(type,num) {
 <strong>{$addon.name}</strong><br />
 {$addon.productname}{if $addon.domainname} - {$addon.domainname}<br />{/if}
 <a href="#" onclick="removeItem('a','{$num}');return false" class="cartremove">[{$LANG.cartremove}]</a>
-</td><td class="textcenter"><strong>{$addon.pricingtext}</strong></td></tr>
+</td><td class="text-right"><strong>{$addon.pricingtext}</strong></td></tr>
 {/foreach}
 
 {foreach key=num item=domain from=$domains}
@@ -99,8 +99,8 @@ function emptyCart(type,num) {
 {if $domain.dnsmanagement}&nbsp;&raquo; {$LANG.domaindnsmanagement}<br />{/if}
 {if $domain.emailforwarding}&nbsp;&raquo; {$LANG.domainemailforwarding}<br />{/if}
 {if $domain.idprotection}&nbsp;&raquo; {$LANG.domainidprotection}<br />{/if}
-<a href="{$smarty.server.PHP_SELF}?a=confdomains" class="cartedit">[{$LANG.cartconfigdomainextras}]</a> <a href="#" onclick="removeItem('d','{$num}');return false" class="cartremove">[{$LANG.cartremove}]</a>
-</td><td class="textcenter"><strong>{$domain.price}</strong></td></tr>
+<a href="{$smarty.server.PHP_SELF}?a=confdomains" class="cartedit"><i class="fa fa-pencil"></i> {$LANG.cartconfigdomainextras}</a> <a href="#" onclick="removeItem('d','{$num}');return false" class="cartremove"><i class="fa fa-trash-o"></i> {$LANG.cartremove}</a>
+</td><td class="text-right"><strong>{$domain.price}</strong></td></tr>
 {/foreach}
 
 {foreach key=num item=domain from=$renewals}
@@ -110,30 +110,30 @@ function emptyCart(type,num) {
 {if $domain.emailforwarding}&nbsp;&raquo; {$LANG.domainemailforwarding}<br />{/if}
 {if $domain.idprotection}&nbsp;&raquo; {$LANG.domainidprotection}<br />{/if}
 <a href="#" onclick="removeItem('r','{$num}');return false" class="cartremove">[{$LANG.cartremove}]</a>
-</td><td class="textcenter"><strong>{$domain.price}</strong></td></tr>
+</td><td class="text-right"><strong>{$domain.price}</strong></td></tr>
 {/foreach}
 
 {if $cartitems==0}
-<tr class="clientareatableactive"><td colspan="2" class="textcenter">
+<tr class="clientareatableactive"><td colspan="2" class="text-center">
 <br />
 {$LANG.cartempty}
 <br /><br />
 </td></tr>
 {/if}
 
-<tr class="subtotal"><td class="textright">{$LANG.ordersubtotal}: &nbsp;</td><td class="textcenter">{$subtotal}</td></tr>
+<tr class="subtotal"><td class="text-left">{$LANG.ordersubtotal}: &nbsp;</td><td class="text-right">{$subtotal}</td></tr>
 {if $promotioncode}
-<tr class="promotion"><td class="textright">{$promotiondescription}: &nbsp;</td><td class="textcenter">{$discount}</td></tr>
+<tr class="promotion"><td class="text-left">{$promotiondescription}: &nbsp;</td><td class="text-right">{$discount}</td></tr>
 {/if}
 {if $taxrate}
-<tr class="subtotal"><td class="textright">{$taxname} @ {$taxrate}%: &nbsp;</td><td class="textcenter">{$taxtotal}</td></tr>
+<tr class="subtotal"><td class="text-left">{$taxname} @ {$taxrate}%: &nbsp;</td><td class="text-right">{$taxtotal}</td></tr>
 {/if}
 {if $taxrate2}
-<tr class="subtotal"><td class="textright">{$taxname2} @ {$taxrate2}%: &nbsp;</td><td class="textcenter">{$taxtotal2}</td></tr>
+<tr class="subtotal"><td class="text-left">{$taxname2} @ {$taxrate2}%: &nbsp;</td><td class="text-right">{$taxtotal2}</td></tr>
 {/if}
-<tr class="success"><td class="textright">{$LANG.ordertotalduetoday}: &nbsp;</td><td class="textcenter">{$total}</td></tr>
+<tr class="success"><td class="text-left">{$LANG.ordertotalduetoday}: &nbsp;</td><td class="text-right"><strong>{$total}</strong></td></tr>
 {if $totalrecurringmonthly || $totalrecurringquarterly || $totalrecurringsemiannually || $totalrecurringannually || $totalrecurringbiennially || $totalrecurringtriennially}
-<tr class="recurring"><td class="textright">{$LANG.ordertotalrecurring}: &nbsp;</td><td class="textcenter">
+<tr class="recurring"><td class="text-left">{$LANG.ordertotalrecurring}: &nbsp;</td><td class="text-right">
 {if $totalrecurringmonthly}{$totalrecurringmonthly} {$LANG.orderpaymenttermmonthly}<br />{/if}
 {if $totalrecurringquarterly}{$totalrecurringquarterly} {$LANG.orderpaymenttermquarterly}<br />{/if}
 {if $totalrecurringsemiannually}{$totalrecurringsemiannually} {$LANG.orderpaymenttermsemiannually}<br />{/if}
@@ -145,10 +145,11 @@ function emptyCart(type,num) {
 </table>
 
 </form>
-
+<div class="pull-right">
 <button type="button" onclick="emptyCart();return false" class="btn btn-danger"><i class="fa fa-trash-o"></i> {$LANG.emptycart}</button>
-<button type="button" onclick="window.location='cart.php'" class="btn btn-success"><i class="fa fa-shopping-cart"></i> {$LANG.continueshopping}</button>
 
+<button type="button" onclick="window.location='cart.php'" class="btn btn-success"><i class="fa fa-shopping-cart"></i> {$LANG.continueshopping}</button>
+</div>
 {foreach from=$gatewaysoutput item=gatewayoutput}
 <div class="clear"></div>
 <div class="cartbuttons">{$gatewayoutput}</div>
@@ -358,7 +359,7 @@ function emptyCart(type,num) {
 </div>
 
 {if $taxenabled && !$loggedin}
-<div class="alert alert-warning">{$LANG.carttaxupdateselections} <input type="submit" value="{$LANG.carttaxupdateselectionsupdate}" name="updateonly" /></div>
+<div class="alert alert-warning text-center">{$LANG.carttaxupdateselections} <br /><br /><input class="btn btn-primary" type="submit" value="{$LANG.carttaxupdateselectionsupdate}" name="updateonly" /></div>
 {/if}
 
 {if $domainsinorder}
@@ -476,8 +477,8 @@ function emptyCart(type,num) {
 {foreach key=num item=gateway from=$gateways}
 <div class="radio">
   <label>
-    <input type="radio" name="paymentmethod" value="{$gateway.sysname}" id="pgbtn{$num}" onclick="{if $gateway.type eq "CC"}showCCForm(){else}hideCCForm(){/if}"{if $selectedgateway eq $gateway.sysname} checked{/if} />
-    {$gateway.name}
+    <input style="display:none;" type="radio" name="paymentmethod" value="{$gateway.sysname}" id="pgbtn{$num}" onclick="{if $gateway.type eq "CC"}showCCForm(){else}hideCCForm(){/if}"{if $selectedgateway eq $gateway.sysname} checked{/if} />
+    <img src="templates/{$template}/static/img/{$gateway.sysname}.png" alt="{$gateway.name}">
   </label>
 </div>
 {/foreach}
@@ -564,18 +565,19 @@ function emptyCart(type,num) {
 <hr />
 
 {if $accepttos}
+<div class="text-center well">
 <div class="radio" style="padding-left: 0px;">
   <label>
     <input type="checkbox" name="accepttos" id="accepttos" />
     {$LANG.ordertosagreement} <a href="{$tosurl}" target="_blank">{$LANG.ordertos}</a>
   </label>
 </div>
+</div>
 {/if}
 
-<br />
-
-<input type="submit" value="{$LANG.completeorder}"{if $cartitems==0} disabled{/if} onclick="this.value='{$LANG.pleasewait}'" class="ordernow btn btn-success" />
-
+<div class="text-center">
+<input type="submit" value="{$LANG.completeorder}"{if $cartitems==0} disabled{/if} onclick="this.value='{$LANG.pleasewait}'" class="ordernow btn btn-lg btn-success" />
+</div>
 </form>
 
 {else}
@@ -585,4 +587,6 @@ function emptyCart(type,num) {
 {/if}
 
 <br />
+<div class="text-center well">
 <i class="fa fa-lock"></i> &nbsp;{$LANG.ordersecure} (<strong>{$ipaddress}</strong>) {$LANG.ordersecure2}
+</div>
